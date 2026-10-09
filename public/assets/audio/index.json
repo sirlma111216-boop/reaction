@@ -1,0 +1,145 @@
+{
+  "builtAt": "2026-10-09T12:06:01.401Z",
+  "audio": [
+    {
+      "id": "bgm-title",
+      "status": "missing"
+    },
+    {
+      "id": "bgm-open",
+      "status": "missing"
+    },
+    {
+      "id": "bgm-lastday",
+      "status": "missing"
+    },
+    {
+      "id": "bgm-closing",
+      "status": "missing"
+    },
+    {
+      "id": "bgm-results",
+      "status": "missing"
+    },
+    {
+      "id": "sting-day-open",
+      "status": "missing"
+    },
+    {
+      "id": "sting-day-close",
+      "status": "missing"
+    },
+    {
+      "id": "sting-group-order",
+      "status": "missing"
+    },
+    {
+      "id": "sting-final",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-tap",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-tab",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-invalid",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-turn",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-buy",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-equip",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-cook-start",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-freeze",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-fog",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-pour",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-puff",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-oven-ding",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-fizz",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-sparkle",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-crack",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-sizzle",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-stars-3",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-stars-2",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-stars-1",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-customer-in",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-customer-out",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-serve",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-coin",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-tip",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-ready",
+      "status": "missing"
+    },
+    {
+      "id": "sfx-waste",
+      "status": "missing"
+    }
+  ]
+}

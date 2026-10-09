@@ -1,0 +1,389 @@
+{
+  "builtAt": "2026-10-09T12:06:01.399Z",
+  "images": [
+    {
+      "id": "bg-title",
+      "status": "missing"
+    },
+    {
+      "id": "bg-lobby",
+      "status": "missing"
+    },
+    {
+      "id": "bg-market",
+      "status": "missing"
+    },
+    {
+      "id": "bg-kitchen",
+      "status": "missing"
+    },
+    {
+      "id": "bg-counter",
+      "status": "missing"
+    },
+    {
+      "id": "bg-closing",
+      "status": "missing"
+    },
+    {
+      "id": "bg-results",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m01",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m02",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m03-hot",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m03-coldbrew",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m04",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m05-fluffy",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m05-plain",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m06",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m07",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m08",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m09",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m10-puffed",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m10-candy",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m11-fluffy",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m11-crepe",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m12",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m13-hot",
+      "status": "missing"
+    },
+    {
+      "id": "menu-m13-cold",
+      "status": "missing"
+    },
+    {
+      "id": "menu-fail",
+      "status": "missing"
+    },
+    {
+      "id": "ing-milk",
+      "status": "missing"
+    },
+    {
+      "id": "ing-cream",
+      "status": "missing"
+    },
+    {
+      "id": "ing-sugar",
+      "status": "missing"
+    },
+    {
+      "id": "ing-chocolate",
+      "status": "missing"
+    },
+    {
+      "id": "ing-tea",
+      "status": "missing"
+    },
+    {
+      "id": "ing-syrup",
+      "status": "missing"
+    },
+    {
+      "id": "ing-rice",
+      "status": "missing"
+    },
+    {
+      "id": "ing-marshmallow",
+      "status": "missing"
+    },
+    {
+      "id": "ing-liquid-nitrogen",
+      "status": "missing"
+    },
+    {
+      "id": "ing-dry-ice",
+      "status": "missing"
+    },
+    {
+      "id": "ing-coffee",
+      "status": "missing"
+    },
+    {
+      "id": "ing-co2",
+      "status": "missing"
+    },
+    {
+      "id": "ing-lemon",
+      "status": "missing"
+    },
+    {
+      "id": "ing-batter",
+      "status": "missing"
+    },
+    {
+      "id": "ing-baking-soda",
+      "status": "missing"
+    },
+    {
+      "id": "ing-reaction-pack",
+      "status": "missing"
+    },
+    {
+      "id": "eq-mixer",
+      "status": "missing"
+    },
+    {
+      "id": "eq-oven",
+      "status": "missing"
+    },
+    {
+      "id": "eq-puffer",
+      "status": "missing"
+    },
+    {
+      "id": "eq-packaging",
+      "status": "missing"
+    },
+    {
+      "id": "eq-carbonator",
+      "status": "missing"
+    },
+    {
+      "id": "eq-griddle",
+      "status": "missing"
+    },
+    {
+      "id": "eq-gas-stove",
+      "status": "missing"
+    },
+    {
+      "id": "cust-01",
+      "status": "missing"
+    },
+    {
+      "id": "cust-02",
+      "status": "missing"
+    },
+    {
+      "id": "cust-03",
+      "status": "missing"
+    },
+    {
+      "id": "cust-04",
+      "status": "missing"
+    },
+    {
+      "id": "cust-05",
+      "status": "missing"
+    },
+    {
+      "id": "cust-06",
+      "status": "missing"
+    },
+    {
+      "id": "cust-07",
+      "status": "missing"
+    },
+    {
+      "id": "cust-08",
+      "status": "missing"
+    },
+    {
+      "id": "cust-takeout",
+      "status": "missing"
+    },
+    {
+      "id": "cust-group",
+      "status": "missing"
+    },
+    {
+      "id": "mascot-cat",
+      "status": "missing"
+    },
+    {
+      "id": "mascot-dog",
+      "status": "missing"
+    },
+    {
+      "id": "mascot-rabbit",
+      "status": "missing"
+    },
+    {
+      "id": "mascot-bear",
+      "status": "missing"
+    },
+    {
+      "id": "mascot-fox",
+      "status": "missing"
+    },
+    {
+      "id": "mascot-penguin",
+      "status": "missing"
+    },
+    {
+      "id": "mascot-otter",
+      "status": "missing"
+    },
+    {
+      "id": "mascot-owl",
+      "status": "missing"
+    },
+    {
+      "id": "npc-guide",
+      "status": "missing"
+    },
+    {
+      "id": "weather-sunny",
+      "status": "missing"
+    },
+    {
+      "id": "weather-hot",
+      "status": "missing"
+    },
+    {
+      "id": "weather-cold",
+      "status": "missing"
+    },
+    {
+      "id": "ui-logo",
+      "status": "missing"
+    },
+    {
+      "id": "ui-coin",
+      "status": "missing"
+    },
+    {
+      "id": "ui-action",
+      "status": "missing"
+    },
+    {
+      "id": "ui-star",
+      "status": "missing"
+    },
+    {
+      "id": "ui-electric",
+      "status": "missing"
+    },
+    {
+      "id": "ui-tab-market",
+      "status": "missing"
+    },
+    {
+      "id": "ui-tab-kitchen",
+      "status": "missing"
+    },
+    {
+      "id": "ui-tab-counter",
+      "status": "missing"
+    },
+    {
+      "id": "ui-tab-note",
+      "status": "missing"
+    },
+    {
+      "id": "ui-stamp-closed",
+      "status": "missing"
+    },
+    {
+      "id": "ui-paper",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m01",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m02",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m03",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m04",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m05",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m06",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m07",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m08",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m09",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m10",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m11",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m12",
+      "status": "missing"
+    },
+    {
+      "id": "principle-m13",
+      "status": "missing"
+    },
+    {
+      "id": "principle-gas-stove",
+      "status": "missing"
+    }
+  ]
+}

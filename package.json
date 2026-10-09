@@ -1,0 +1,50 @@
+{
+  "name": "reaction-cafe",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "리액션 카페 — 중학교 과학 수업용 실시간 팀 대항 카페 운영 게임",
+  "scripts": {
+    "dev": "vite",
+    "dev:worker": "wrangler dev --port 8787",
+    "build": "vite build",
+    "typecheck": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.worker.json --noEmit",
+    "lint": "eslint src scripts --max-warnings 0",
+    "test": "vitest run",
+    "verify:content": "tsx scripts/verify-content.ts",
+    "sim:smoke": "tsx src/sim/cli.ts smoke",
+    "sim:balance": "tsx src/sim/cli.ts balance",
+    "sim:validate": "tsx src/sim/cli.ts validate",
+    "sim:replay": "tsx src/sim/cli.ts replay",
+    "assets:build": "node scripts/build-assets.mjs",
+    "assets:validate": "tsx scripts/validate-assets.ts",
+    "e2e": "node scripts/e2e-ws.mjs http://127.0.0.1:8787 30 1",
+    "deploy": "npm run build && wrangler deploy",
+    "check": "npm run typecheck && npm run lint && npm run test && npm run verify:content && npm run assets:validate && npm run build"
+  },
+  "dependencies": {
+    "@fontsource/gaegu": "^5.3.0",
+    "@fontsource/jua": "^5.3.0",
+    "pretendard": "^1.3.9",
+    "qrcode": "^1.5.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260923.1",
+    "@eslint/js": "^9.36.0",
+    "@types/node": "^24.5.2",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.3",
+    "eslint": "^9.36.0",
+    "sharp": "^0.34.4",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.44.1",
+    "vite": "^7.1.7",
+    "vitest": "^3.2.4",
+    "wrangler": "^4.40.0"
+  }
+}

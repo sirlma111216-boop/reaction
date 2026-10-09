@@ -1,0 +1,5 @@
+# 로컬 개발(wrangler dev) 전용. 이 파일을 .dev.vars 로 복사하고 값을 채운다. .dev.vars 는 커밋하지 않는다.
+# 운영에서는 `wrangler secret put TEACHER_PASSWORD` 로만 등록한다.
+TEACHER_ID=teacher
+TEACHER_PASSWORD=
+ENVIRONMENT=development

@@ -1,0 +1,680 @@
+/// <reference types="@cloudflare/workers-types" />
+import { DurableObject } from 'cloudflare:workers';
+import type { GameState, PresetId, TeamCommand, TeamState } from '../shared/types';
+import type { ClientEnvelope, ClientView, PlayerPublic, PlayerRole, RoomCommand, ServerMessage, TeamPublic } from '../shared/protocol';
+import { sanitizeName, TEAM_NAME_MAX } from '../shared/protocol';
+import { createGame, cumulativeNet, TEAM_COLORS } from '../shared/engine/state';
+import { startGame, settleDay, allTeamsReady, endEarly } from '../shared/engine/phases';
+import { applyTeamCommand } from '../shared/engine/commands';
+import { projectGame, stripTeam } from '../shared/projection';
+import { DEFAULT_ECONOMY } from '../shared/config/economy';
+import { MASCOT_IDS, MENUS } from '../shared/content';
+import type { Env } from './index';
+
+interface Player {
+  id: string;
+  nick: string;
+  role: PlayerRole;
+  token: string;
+  teamId: string | null;
+  isLeader: boolean;
+  joinedAt: number;
+  lastSeen: number;
+}
+
+interface Team {
+  id: string;
+  name: string;
+  color: string;
+  mascot: string;
+  leaderId: string | null;
+  members: string[];
+  ready: boolean;
+  operatorStart: number;
+}
+
+interface RoomMeta {
+  code: string;
+  createdAt: number;
+  updatedAt: number;
+  status: 'lobby' | 'playing' | 'paused' | 'finished' | 'expired';
+  locked: boolean;
+  presetId: PresetId;
+  days: number;
+  teacherNick: string;
+  teacherToken: string;
+  teacherPlayerId: string;
+  origin: string;
+  finishedAt: number | null;
+  cmdLog: Record<string, { ok: boolean; error?: string; stars?: number; paid?: number; result?: string }>;
+  cmdOrder: string[];
+  joinTimes: number[];
+  /** 정산 진행 중 플래그 (경합 방지) */
+  settling: boolean;
+  schemaVersion: number;
+}
+
+const LOBBY_IDLE_MS = 2 * 60 * 60 * 1000;
+const FINISHED_KEEP_MS = 24 * 60 * 60 * 1000;
+const MAX_AGE_MS = 48 * 60 * 60 * 1000;
+const MAX_PLAYERS = 40;
+const MAX_TEAMS = 8;
+const TEAM_MAX_MEMBERS = 8;
+const BROADCAST_DELAY_MS = 120;
+const SCHEMA_VERSION = 1;
+
+function randomToken(bytes = 18): string {
+  const b = new Uint8Array(bytes);
+  crypto.getRandomValues(b);
+  return Array.from(b, (x) => x.toString(16).padStart(2, '0')).join('');
+}
+
+/** 학급 방 하나 = Durable Object 하나. SQLite 저장소에 상태를 두고 휴면에서 깨어나도 이어진다. */
+export class RoomDurableObject extends DurableObject<Env> {
+  private meta: RoomMeta | null = null;
+  private players: Record<string, Player> = {};
+  private teams: Record<string, Team> = {};
+  private game: GameState | null = null;
+  private loaded = false;
+  private broadcastTimer: ReturnType<typeof setTimeout> | null = null;
+  private dirty = false;
+
+  // ---------- 저장 ----------
+  private async load(): Promise<void> {
+    if (this.loaded) return;
+    await this.ctx.blockConcurrencyWhile(async () => {
+      const [meta, players, teams, core] = await Promise.all([
+        this.ctx.storage.get<RoomMeta>('meta'),
+        this.ctx.storage.get<Record<string, Player>>('players'),
+        this.ctx.storage.get<Record<string, Team>>('teams'),
+        this.ctx.storage.get<Omit<GameState, 'teams'>>('game:core'),
+      ]);
+      this.meta = meta ? { ...meta, settling: false } : null;
+      this.players = players ?? {};
+      this.teams = teams ?? {};
+      if (core) {
+        const teamsMap: Record<string, TeamState> = {};
+        for (const id of core.teamOrder) {
+          const t = await this.ctx.storage.get<TeamState>(`game:team:${id}`);
+          if (t) teamsMap[id] = t;
+        }
+        this.game = { ...core, teams: teamsMap } as GameState;
+      }
+      this.loaded = true;
+    });
+  }
+
+  private async save(): Promise<void> {
+    if (!this.meta) return;
+    this.meta.updatedAt = Date.now();
+    const entries: Record<string, unknown> = { meta: this.meta, players: this.players, teams: this.teams };
+    if (this.game) {
+      const { teams, ...core } = this.game;
+      entries['game:core'] = core;
+      for (const [id, t] of Object.entries(teams)) entries[`game:team:${id}`] = t;
+    }
+    await this.ctx.storage.put(entries);
+  }
+
+  // ---------- HTTP 진입 ----------
+  async fetch(request: Request): Promise<Response> {
+    await this.load();
+    const url = new URL(request.url);
+    if (request.headers.get('upgrade') === 'websocket') return this.handleUpgrade(request);
+    const path = url.pathname;
+
+    if (path === '/init' && request.method === 'POST') {
+      if (this.meta && this.meta.status !== 'expired') return new Response('exists', { status: 409 });
+      const body = (await request.json()) as { code: string; nick: string; presetId: PresetId; days: number; origin: string };
+      const now = Date.now();
+      const teacherPlayerId = 'P' + randomToken(4);
+      this.meta = {
+        code: body.code, createdAt: now, updatedAt: now, status: 'lobby', locked: false, presetId: body.presetId, days: body.days,
+        teacherNick: body.nick, teacherToken: randomToken(), teacherPlayerId, origin: body.origin, finishedAt: null,
+        cmdLog: {}, cmdOrder: [], joinTimes: [], settling: false, schemaVersion: SCHEMA_VERSION,
+      };
+      this.players = { [teacherPlayerId]: { id: teacherPlayerId, nick: body.nick, role: 'teacher', token: this.meta.teacherToken, teamId: null, isLeader: false, joinedAt: now, lastSeen: now } };
+      this.teams = {};
+      this.game = null;
+      await this.save();
+      await this.ctx.storage.setAlarm(now + LOBBY_IDLE_MS);
+      return Response.json({ code: body.code, teacherToken: this.meta.teacherToken, playerId: teacherPlayerId });
+    }
+
+    if (!this.meta || this.meta.status === 'expired') return Response.json({ error: '없는 방 코드입니다.', exists: false }, { status: 404 });
+    if (await this.maybeExpire()) return Response.json({ error: '만료된 방입니다.', exists: false }, { status: 410 });
+
+    if (path === '/info') {
+      return Response.json({ exists: true, code: this.meta.code, status: this.meta.status, locked: this.meta.locked, presetId: this.meta.presetId, days: this.meta.days, players: Object.keys(this.players).length - 1, teams: Object.keys(this.teams).length, teacherNick: this.meta.teacherNick });
+    }
+    if (path === '/join' && request.method === 'POST') {
+      const body = (await request.json()) as { nick: string };
+      const now = Date.now();
+      this.meta.joinTimes = this.meta.joinTimes.filter((t) => now - t < 10_000);
+      if (this.meta.joinTimes.length >= 60) return Response.json({ error: '입장 요청이 너무 많습니다. 잠시 후 다시 시도하세요.' }, { status: 429 });
+      this.meta.joinTimes.push(now);
+      const nick = sanitizeName(body.nick, 12);
+      if (nick.length < 1) return Response.json({ error: '닉네임을 입력하세요.' }, { status: 400 });
+      if (Object.values(this.players).some((p) => p.nick.toLowerCase() === nick.toLowerCase())) return Response.json({ error: '이미 사용 중인 닉네임입니다.' }, { status: 409 });
+      if (Object.keys(this.players).length - 1 >= MAX_PLAYERS) return Response.json({ error: '방이 가득 찼습니다.' }, { status: 409 });
+      if (this.meta.locked && this.meta.status === 'lobby') return Response.json({ error: '교사가 방을 잠갔습니다.' }, { status: 403 });
+      const role: PlayerRole = this.meta.status === 'lobby' ? 'student' : 'spectator';
+      const id = 'P' + randomToken(4);
+      this.players[id] = { id, nick, role, token: randomToken(), teamId: null, isLeader: false, joinedAt: now, lastSeen: now };
+      await this.save();
+      this.scheduleBroadcast();
+      return Response.json({ playerId: id, token: this.players[id]!.token, role });
+    }
+    if (path === '/teacher') {
+      return Response.json({ code: this.meta.code, teacherToken: this.meta.teacherToken, playerId: this.meta.teacherPlayerId });
+    }
+    if (path === '/recover' && request.method === 'POST') {
+      const body = (await request.json()) as { playerId: string };
+      const p = this.players[body.playerId];
+      if (!p || p.role === 'teacher') return Response.json({ error: '없는 참가자입니다.' }, { status: 404 });
+      p.token = randomToken();
+      for (const ws of this.ctx.getWebSockets(p.id)) { try { ws.close(4001, 'reissued'); } catch {} }
+      await this.save();
+      return Response.json({ playerId: p.id, token: p.token, nick: p.nick });
+    }
+    if (path === '/export') {
+      if (url.searchParams.get('format') === 'csv') return new Response(this.exportCsv(), { headers: { 'content-type': 'text/csv; charset=utf-8', 'content-disposition': `attachment; filename="reaction-cafe-${this.meta.code}.csv"` } });
+      return Response.json(this.exportData());
+    }
+    return new Response('not found', { status: 404 });
+  }
+
+  /** 결과 내보내기: 팀 단위 기록만. 개인 점수는 없다. */
+  private exportData() {
+    const g = this.game;
+    return {
+      code: this.meta?.code, presetId: this.meta?.presetId, days: this.meta?.days, createdAt: this.meta?.createdAt, status: this.meta?.status,
+      contentVersion: g?.contentVersion, configVersion: g?.config.version, seed: g?.seed, weather: g?.weather ?? null,
+      teams: Object.values(this.teams).map((t) => ({ id: t.id, name: t.name, mascot: t.mascot, color: t.color, memberCount: t.members.length })),
+      results: g?.results ?? null,
+      receipts: g ? Object.fromEntries(Object.values(g.teams).map((t) => [t.name, t.receipts])) : null,
+      attempts: g ? Object.fromEntries(Object.values(g.teams).map((t) => [t.name, t.attempts])) : null,
+      served: g ? Object.fromEntries(Object.values(g.teams).map((t) => [t.name, t.served])) : null,
+      log: g?.log ?? [],
+    };
+  }
+
+  private exportCsv(): string {
+    const g = this.game;
+    const rows: string[][] = [['팀', '순위', '순이익', '최종 코인', '매출', '지출', '낸 인분', '평균 별점', '폐기 인분', '가장 많이 판 메뉴', '상']];
+    for (const r of g?.results ?? []) rows.push([r.name, String(r.rank), String(r.netProfit), String(r.coins), String(r.revenue), String(r.expenses), String(r.servedServings), String(r.avgStars), String(r.wasteServings), r.topMenu ? MENUS[r.topMenu.menuId]?.name ?? r.topMenu.menuId : '', r.awards.join(' ')]);
+    rows.push([]);
+    rows.push(['팀', '영업일', '매출', '팁', '날씨 보너스', '포장 보너스', '단체 보너스', '재료비', '전기 요금', '장비', '긴급 지원', '폐기 인분', '오늘 순이익', '누적 순이익']);
+    for (const t of Object.values(g?.teams ?? {})) for (const l of t.receipts) rows.push([t.name, String(l.day), String(l.sales), String(l.tips), String(l.weatherBonus), String(l.takeoutBonus), String(l.groupBonus), String(l.ingredients), String(l.electricity), String(l.equipment), String(l.aid), String(l.waste.reduce((a, w) => a + w.servings, 0)), String(l.net), String(l.cumulative)]);
+    const esc = (s: string) => (/[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);
+    return '﻿' + rows.map((r) => r.map(esc).join(',')).join('\n');
+  }
+
+  // ---------- 만료 ----------
+  private async maybeExpire(): Promise<boolean> {
+    if (!this.meta) return false;
+    const now = Date.now();
+    const age = now - this.meta.createdAt;
+    const idle = now - this.meta.updatedAt;
+    const expired = age > MAX_AGE_MS
+      || (this.meta.status === 'lobby' && idle > LOBBY_IDLE_MS)
+      || (this.meta.status === 'finished' && this.meta.finishedAt !== null && now - this.meta.finishedAt > FINISHED_KEEP_MS);
+    if (!expired) return false;
+    for (const ws of this.ctx.getWebSockets()) { try { ws.send(JSON.stringify({ type: 'closed', reason: '방이 만료되었습니다.' } satisfies ServerMessage)); ws.close(4000, 'expired'); } catch {} }
+    await this.ctx.storage.deleteAll();
+    await this.ctx.storage.deleteAlarm();
+    this.meta = { ...this.meta, status: 'expired' };
+    this.players = {}; this.teams = {}; this.game = null;
+    return true;
+  }
+
+  // ---------- WebSocket ----------
+  private handleUpgrade(request: Request): Response {
+    const url = new URL(request.url);
+    const token = url.searchParams.get('token') ?? '';
+    const player = Object.values(this.players).find((p) => p.token === token);
+    if (!player || !this.meta) return new Response('unauthorized', { status: 401 });
+    const pair = new WebSocketPair();
+    const [client, server] = [pair[0], pair[1]];
+    this.ctx.acceptWebSocket(server, [player.id]);
+    server.serializeAttachment({ playerId: player.id });
+    player.lastSeen = Date.now();
+    this.sendTo(server, { type: 'view', view: this.projectFor(player) });
+    this.scheduleBroadcast();
+    return new Response(null, { status: 101, webSocket: client });
+  }
+
+  private playerOf(ws: WebSocket): Player | null {
+    const att = ws.deserializeAttachment() as { playerId?: string } | null;
+    return att?.playerId ? this.players[att.playerId] ?? null : null;
+  }
+
+  async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer): Promise<void> {
+    await this.load();
+    if (!this.meta) return;
+    const player = this.playerOf(ws);
+    if (!player) { ws.close(4001, 'unknown'); return; }
+    let env: ClientEnvelope;
+    try { env = JSON.parse(typeof message === 'string' ? message : new TextDecoder().decode(message)) as ClientEnvelope; } catch { return; }
+    if (env.type === 'ping') { this.sendTo(ws, { type: 'pong', now: Date.now() }); return; }
+    if (env.type !== 'cmd' || typeof env.id !== 'string') return;
+    player.lastSeen = Date.now();
+    // 중복 commandId: 같은 결과 반환, 두 번 적용하지 않음
+    const key = `${player.id}:${env.id}`;
+    const prev = this.meta.cmdLog[key];
+    if (prev) { this.sendTo(ws, { type: 'ack', id: env.id, ...prev }); return; }
+    const res = await this.handleCommand(player, env.cmd);
+    this.meta.cmdLog[key] = res;
+    this.meta.cmdOrder.push(key);
+    if (this.meta.cmdOrder.length > 400) { const old = this.meta.cmdOrder.splice(0, 100); for (const k of old) delete this.meta.cmdLog[k]; }
+    this.sendTo(ws, { type: 'ack', id: env.id, ...res });
+    await this.save();
+    this.scheduleBroadcast();
+  }
+
+  async webSocketClose(ws: WebSocket, code?: number, reason?: string): Promise<void> {
+    try { ws.close(typeof code === 'number' && code >= 1000 && code < 5000 && code !== 1005 && code !== 1006 ? code : 1000, (reason ?? '').slice(0, 100)); } catch {}
+    await this.load();
+    const player = this.playerOf(ws);
+    if (player && this.meta) { player.lastSeen = Date.now(); await this.save(); }
+    this.scheduleBroadcast();
+  }
+
+  async webSocketError(ws: WebSocket): Promise<void> {
+    await this.webSocketClose(ws);
+  }
+
+  private connectedCount(playerId: string): number {
+    return this.ctx.getWebSockets(playerId).length;
+  }
+  private isConnected(playerId: string): boolean {
+    return this.connectedCount(playerId) > 0;
+  }
+
+  private sendTo(ws: WebSocket, msg: ServerMessage): void {
+    try { ws.send(JSON.stringify(msg)); } catch {}
+  }
+
+  private scheduleBroadcast(): void {
+    this.dirty = true;
+    if (this.broadcastTimer) return;
+    this.broadcastTimer = setTimeout(() => { this.broadcastTimer = null; if (this.dirty) this.broadcast(); }, BROADCAST_DELAY_MS);
+  }
+
+  /** 역할·팀별 projection 을 한 번씩만 계산해 보낸다. */
+  private broadcast(): void {
+    this.dirty = false;
+    if (!this.meta) return;
+    const cache = new Map<string, string>();
+    for (const ws of this.ctx.getWebSockets()) {
+      const p = this.playerOf(ws);
+      if (!p) continue;
+      const key = `${p.role}:${p.teamId ?? ''}:${p.id}`;
+      let payload = cache.get(key);
+      if (!payload) { payload = JSON.stringify({ type: 'view', view: this.projectFor(p) } satisfies ServerMessage); cache.set(key, payload); }
+      try { ws.send(payload); } catch {}
+    }
+  }
+
+  private toast(playerIds: string[] | 'all', text: string, level: 'info' | 'warn' | 'success' = 'info'): void {
+    const ids = playerIds === 'all' ? Object.keys(this.players) : playerIds;
+    for (const id of ids) for (const ws of this.ctx.getWebSockets(id)) this.sendTo(ws, { type: 'toast', text, level });
+  }
+
+  // ---------- Projection ----------
+  private projectFor(p: Player): ClientView {
+    const meta = this.meta!;
+    const g = this.game;
+    const players: PlayerPublic[] = Object.values(this.players).map((x) => ({ id: x.id, nick: x.nick, role: x.role, teamId: x.teamId, isLeader: x.isLeader, connected: this.isConnected(x.id) }));
+    const teams: TeamPublic[] = Object.values(this.teams).map((t) => {
+      const gt = g?.teams[t.id];
+      return {
+        id: t.id, name: t.name, color: t.color, mascot: t.mascot, leaderId: t.leaderId, members: t.members, ready: t.ready,
+        dayReady: gt?.ready ?? false, netUntilYesterday: gt ? cumulativeNet(gt) : 0, netHistory: gt?.netHistory ?? [], operatorId: gt?.operatorId ?? null,
+        actionsLeft: gt?.actionsLeft ?? 0, connectedCount: t.members.filter((m) => this.isConnected(m)).length,
+      };
+    });
+    const myTeamId = p.teamId;
+    const view: ClientView = {
+      serverNow: Date.now(),
+      me: { playerId: p.id, nick: p.nick, role: p.role, teamId: myTeamId, isLeader: p.isLeader, isOperator: !!(g && myTeamId && g.teams[myTeamId]?.operatorId === p.id) },
+      room: {
+        code: meta.code, status: meta.status, locked: meta.locked, presetId: meta.presetId, days: meta.days, teacherNick: meta.teacherNick, teacherPlayerId: meta.teacherPlayerId,
+        createdAt: meta.createdAt, expiresAt: meta.createdAt + MAX_AGE_MS, joinUrl: `${meta.origin}/?room=${meta.code}`,
+      },
+      players,
+      teams,
+      game: g ? projectGame(g, myTeamId) : null,
+    };
+    if (p.role === 'teacher' && g) {
+      view.teacherTeams = Object.values(g.teams).map((t) => stripTeam(t));
+      view.teacherWeather = g.weather;
+    }
+    return view;
+  }
+
+  // ---------- 명령 처리 ----------
+  private async handleCommand(p: Player, cmd: RoomCommand): Promise<{ ok: boolean; error?: string; stars?: number; paid?: number; result?: string }> {
+    const meta = this.meta!;
+    const fail = (error: string) => ({ ok: false, error });
+    const isTeacher = p.role === 'teacher';
+    try {
+      switch (cmd.type) {
+        // ----- 교사 -----
+        case 'appointLeader': {
+          if (!isTeacher) return fail('교사만 팀장을 임명할 수 있어요.');
+          if (meta.status !== 'lobby') return fail('대기실에서만 임명할 수 있어요.');
+          const target = this.players[cmd.playerId];
+          if (!target || target.role === 'teacher') return fail('없는 학생이에요.');
+          if (!cmd.on && target.teamId && this.teams[target.teamId]?.leaderId === target.id) return fail('카페를 이미 만든 팀장이에요. 팀장 교체를 쓰세요.');
+          target.isLeader = !!cmd.on;
+          return { ok: true };
+        }
+        case 'movePlayer': {
+          if (!isTeacher) return fail('교사만 이동시킬 수 있어요.');
+          const target = this.players[cmd.playerId];
+          if (!target || target.role === 'teacher') return fail('없는 학생이에요.');
+          if (cmd.teamId && !this.teams[cmd.teamId]) return fail('없는 팀이에요.');
+          if (cmd.teamId && this.teams[cmd.teamId]!.members.length >= TEAM_MAX_MEMBERS) return fail('팀 인원이 가득 찼어요.');
+          this.removeFromTeam(target);
+          if (cmd.teamId) { this.teams[cmd.teamId]!.members.push(target.id); target.teamId = cmd.teamId; target.role = 'student'; }
+          this.syncTeamStates();
+          return { ok: true };
+        }
+        case 'kickPlayer': {
+          if (!isTeacher) return fail('교사만 내보낼 수 있어요.');
+          const target = this.players[cmd.playerId];
+          if (!target || target.role === 'teacher') return fail('없는 학생이에요.');
+          this.removeFromTeam(target);
+          delete this.players[target.id];
+          for (const ws of this.ctx.getWebSockets(target.id)) { this.sendTo(ws, { type: 'closed', reason: '교사가 내보냈습니다.' }); try { ws.close(4002, 'kicked'); } catch {} }
+          this.syncTeamStates();
+          return { ok: true };
+        }
+        case 'setTeamLeader': {
+          if (!isTeacher) return fail('교사만 팀장을 교체할 수 있어요.');
+          const team = this.teams[cmd.teamId];
+          const target = this.players[cmd.playerId];
+          if (!team || !target || !team.members.includes(target.id)) return fail('그 팀의 팀원이 아니에요.');
+          if (team.leaderId) { const old = this.players[team.leaderId]; if (old) old.isLeader = false; }
+          team.leaderId = target.id; target.isLeader = true;
+          return { ok: true };
+        }
+        case 'disbandTeam': {
+          if (!isTeacher) return fail('교사만 팀을 해산할 수 있어요.');
+          if (meta.status !== 'lobby') return fail('대기실에서만 해산할 수 있어요.');
+          const team = this.teams[cmd.teamId];
+          if (!team) return fail('없는 팀이에요.');
+          for (const m of team.members) { const pl = this.players[m]; if (pl) { pl.teamId = null; if (team.leaderId === m) pl.isLeader = false; } }
+          delete this.teams[team.id];
+          return { ok: true };
+        }
+        case 'lock': {
+          if (!isTeacher) return fail('교사만 잠글 수 있어요.');
+          meta.locked = !!cmd.on;
+          return { ok: true };
+        }
+        case 'start': {
+          if (!isTeacher) return fail('교사만 시작할 수 있어요.');
+          if (meta.status !== 'lobby') return fail('이미 시작했어요.');
+          const teams = Object.values(this.teams).filter((t) => t.members.length > 0);
+          if (teams.length < 1) return fail('카페가 하나 이상 필요해요.');
+          for (const t of Object.values(this.teams)) if (t.members.length === 0) delete this.teams[t.id];
+          this.game = createGame({
+            seed: `${meta.code}-${meta.createdAt}`, presetId: meta.presetId, daysTotal: meta.days, config: DEFAULT_ECONOMY,
+            teams: teams.map((t) => ({ id: t.id, name: t.name, color: t.color, mascot: t.mascot })),
+          });
+          startGame(this.game);
+          meta.status = 'playing';
+          meta.locked = true;
+          for (const pl of Object.values(this.players)) if (pl.role === 'student' && !pl.teamId) pl.role = 'spectator';
+          this.assignOperators();
+          await this.rescheduleAlarm();
+          this.notifyDirectory('playing');
+          return { ok: true };
+        }
+        case 'pause': {
+          if (!isTeacher) return fail('교사만 멈출 수 있어요.');
+          if (meta.status !== 'playing') return fail('진행 중이 아니에요.');
+          meta.status = 'paused';
+          await this.rescheduleAlarm();
+          this.toast('all', '선생님이 게임을 잠시 멈췄어요.', 'warn');
+          return { ok: true };
+        }
+        case 'resume': {
+          if (!isTeacher) return fail('교사만 다시 시작할 수 있어요.');
+          if (meta.status !== 'paused') return fail('멈춤 상태가 아니에요.');
+          meta.status = 'playing';
+          await this.rescheduleAlarm();
+          this.toast('all', '게임을 다시 시작해요.', 'info');
+          await this.tryAdvanceDay();
+          return { ok: true };
+        }
+        case 'setOperator': {
+          if (!isTeacher && !(p.teamId === cmd.teamId && this.teams[cmd.teamId]?.leaderId === p.id)) return fail('교사나 팀장만 점장을 넘길 수 있어요.');
+          const g = this.game; const team = this.teams[cmd.teamId];
+          if (!g || !team || !g.teams[team.id]) return fail('없는 팀이에요.');
+          if (!team.members.includes(cmd.playerId)) return fail('그 팀의 팀원이 아니에요.');
+          g.teams[team.id]!.operatorId = cmd.playerId;
+          this.toast([cmd.playerId], '오늘의 점장이 되었어요. 지금부터 행동할 수 있어요.', 'success');
+          return { ok: true };
+        }
+        case 'skipTeam': {
+          if (!isTeacher) return fail('교사만 건너뛸 수 있어요.');
+          const g = this.game;
+          if (!g || g.phase !== 'open') return fail('지금은 건너뛸 수 없어요.');
+          const gt = g.teams[cmd.teamId];
+          if (!gt) return fail('없는 팀이에요.');
+          gt.ready = true;
+          this.toast(this.teams[gt.id]?.members ?? [], '선생님이 오늘 영업을 마감 처리했어요.', 'warn');
+          await this.tryAdvanceDay();
+          return { ok: true };
+        }
+        case 'endGame': {
+          if (!isTeacher) return fail('교사만 종료할 수 있어요.');
+          if (!this.game || this.game.phase !== 'open') return fail('진행 중인 경기가 없어요.');
+          if (meta.settling) return fail('정산 중이에요.');
+          meta.settling = true;
+          try { endEarly(this.game); } finally { meta.settling = false; }
+          await this.onGameFinished();
+          return { ok: true };
+        }
+        case 'teacherJoinTeam': {
+          if (!isTeacher) return fail('교사 전용이에요.');
+          if (meta.status !== 'lobby') return fail('대기실에서만 참가할 수 있어요.');
+          if (p.teamId) return fail('이미 팀에 참가했어요.');
+          return this.createTeamFor(p, cmd.name, cmd.color, cmd.mascot);
+        }
+        case 'teacherLeaveTeam': {
+          if (!isTeacher) return fail('교사 전용이에요.');
+          if (meta.status !== 'lobby') return fail('대기실에서만 나갈 수 있어요.');
+          if (!p.teamId) return fail('팀에 속해 있지 않아요.');
+          const team = this.teams[p.teamId]!;
+          this.removeFromTeam(p);
+          if (team.members.length === 0) delete this.teams[team.id];
+          else if (team.leaderId === p.id) { team.leaderId = team.members[0]!; this.players[team.leaderId]!.isLeader = true; }
+          return { ok: true };
+        }
+        // ----- 팀장 -----
+        case 'createTeam': {
+          if (meta.status !== 'lobby') return fail('대기실에서만 카페를 만들 수 있어요.');
+          if (!p.isLeader) return fail('교사가 임명한 팀장만 카페를 만들 수 있어요.');
+          if (p.teamId) return fail('이미 팀에 속해 있어요.');
+          return this.createTeamFor(p, cmd.name, cmd.color, cmd.mascot);
+        }
+        case 'ready': {
+          const team = this.leaderTeam(p);
+          if (!team) return fail('팀장만 준비를 누를 수 있어요.');
+          team.ready = !!cmd.on;
+          return { ok: true };
+        }
+        case 'reorderMembers': {
+          const team = this.leaderTeam(p);
+          if (!team) return fail('팀장만 순서를 정할 수 있어요.');
+          if (meta.status !== 'lobby') return fail('점장 순서는 시작 전에만 정할 수 있어요.');
+          const order = (cmd.order ?? []).filter((id, i, arr) => team.members.includes(id) && arr.indexOf(id) === i);
+          if (order.length !== team.members.length) return fail('순서 목록이 팀원과 맞지 않아요.');
+          team.members = order;
+          return { ok: true };
+        }
+        // ----- 학생 -----
+        case 'joinTeam': {
+          if (meta.status !== 'lobby') return fail('경기 중에는 팀을 옮길 수 없어요. 선생님께 요청하세요.');
+          if (p.role === 'teacher') return fail('교사는 「팀으로 참가」를 쓰세요.');
+          if (p.teamId) return fail('이미 팀에 속해 있어요.');
+          const team = this.teams[cmd.teamId];
+          if (!team) return fail('없는 팀이에요.');
+          if (team.members.length >= TEAM_MAX_MEMBERS) return fail('팀 인원이 가득 찼어요.');
+          team.members.push(p.id); p.teamId = team.id;
+          return { ok: true };
+        }
+        case 'leaveTeam': {
+          if (meta.status !== 'lobby') return fail('경기 중에는 팀을 나갈 수 없어요.');
+          if (!p.teamId) return fail('팀에 속해 있지 않아요.');
+          const team = this.teams[p.teamId]!;
+          if (team.leaderId === p.id) return fail('팀장은 팀을 나갈 수 없어요. 선생님께 팀장 교체를 요청하세요.');
+          this.removeFromTeam(p);
+          return { ok: true };
+        }
+        case 'team': {
+          return await this.handleTeamCommand(p, cmd.cmd);
+        }
+        default:
+          return fail('알 수 없는 명령이에요.');
+      }
+    } finally {
+      this.syncTeamStates();
+    }
+  }
+
+  private createTeamFor(p: Player, nameRaw: string, color: string, mascot: string): { ok: boolean; error?: string } {
+    const name = sanitizeName(nameRaw, TEAM_NAME_MAX);
+    if (!name) return { ok: false, error: '카페 이름을 입력하세요.' };
+    if (Object.keys(this.teams).length >= MAX_TEAMS) return { ok: false, error: `카페는 최대 ${MAX_TEAMS}개예요.` };
+    if (Object.values(this.teams).some((t) => t.name.toLowerCase() === name.toLowerCase())) return { ok: false, error: '같은 이름의 카페가 있어요.' };
+    const usedMascots = new Set(Object.values(this.teams).map((t) => t.mascot));
+    const usedColors = new Set(Object.values(this.teams).map((t) => t.color));
+    const ms = MASCOT_IDS.includes(mascot) && !usedMascots.has(mascot) ? mascot : MASCOT_IDS.find((e) => !usedMascots.has(e)) ?? MASCOT_IDS[0]!;
+    const col = TEAM_COLORS.includes(color) && !usedColors.has(color) ? color : TEAM_COLORS.find((c) => !usedColors.has(c)) ?? TEAM_COLORS[0]!;
+    const id = 'T' + randomToken(3);
+    this.teams[id] = { id, name, color: col, mascot: ms, leaderId: p.id, members: [p.id], ready: false, operatorStart: 0 };
+    p.teamId = id; p.isLeader = true;
+    return { ok: true };
+  }
+
+  private leaderTeam(p: Player): Team | null {
+    if (!p.teamId) return null;
+    const t = this.teams[p.teamId];
+    return t && t.leaderId === p.id ? t : null;
+  }
+
+  private removeFromTeam(p: Player): void {
+    if (!p.teamId) return;
+    const t = this.teams[p.teamId];
+    if (t) t.members = t.members.filter((m) => m !== p.id);
+    p.teamId = null;
+  }
+
+  private syncTeamStates(): void {
+    if (!this.game) return;
+    for (const t of Object.values(this.teams)) {
+      const gt = this.game.teams[t.id];
+      if (gt) { gt.name = t.name; gt.color = t.color; gt.mascot = t.mascot; }
+    }
+  }
+
+  private async handleTeamCommand(p: Player, cmd: TeamCommand): Promise<{ ok: boolean; error?: string; stars?: number; paid?: number; result?: string }> {
+    const g = this.game;
+    if (!g) return { ok: false, error: '경기가 시작되지 않았어요.' };
+    if (!p.teamId || !g.teams[p.teamId]) return { ok: false, error: '팀에 속해 있지 않아요.' };
+    if (this.meta!.status === 'paused') return { ok: false, error: '선생님이 게임을 멈췄어요.' };
+    if (this.meta!.status !== 'playing') return { ok: false, error: '지금은 영업 중이 아니에요.' };
+    const team = g.teams[p.teamId]!;
+    const freeForAll = cmd.type === 'pin' || cmd.type === 'hint';
+    if (cmd.type === 'pin') {
+      const now = Date.now();
+      const recent = team.pins.filter((x) => x.playerId === p.id && now - x.at < 10_000).length;
+      if (recent >= 6) return { ok: false, error: '추천이 너무 많아요. 잠시 후 다시 해 주세요.' };
+      cmd = { ...cmd, playerId: p.id, at: now };
+    }
+    if (!freeForAll && team.operatorId !== p.id) return { ok: false, error: `오늘의 점장은 ${this.players[team.operatorId ?? '']?.nick ?? '다른 팀원'}이에요. 추천으로 도와주세요.` };
+    if (cmd.type === 'ready' && this.meta!.settling) return { ok: false, error: '정산 중이에요. 잠시 후 최신 상태를 보내 드릴게요.' };
+    const res = applyTeamCommand(g, team.id, cmd);
+    if (res.ok && cmd.type === 'ready' && cmd.on) await this.tryAdvanceDay();
+    return res;
+  }
+
+  /** 모든 참가 팀이 마감하면 정산을 정확히 한 번 수행하고 다음 날을 연다. */
+  private async tryAdvanceDay(): Promise<boolean> {
+    const meta = this.meta!;
+    const g = this.game;
+    if (!g || meta.status !== 'playing' || g.phase !== 'open' || meta.settling) return false;
+    const teamIds = Object.values(this.teams).filter((t) => t.members.length > 0).map((t) => t.id);
+    if (!allTeamsReady(g, teamIds)) return false;
+    meta.settling = true;
+    try {
+      const done = g.day;
+      settleDay(g);
+      if ((g.phase as string) === 'finished') { await this.onGameFinished(); }
+      else {
+        this.assignOperators();
+        this.toast('all', `${done}일 차 영업이 끝났어요. ${g.day}일 차를 시작해요.`, 'info');
+      }
+    } finally {
+      meta.settling = false;
+    }
+    return true;
+  }
+
+  // ---------- 점장 순환 ----------
+  private assignOperators(): void {
+    const g = this.game;
+    if (!g) return;
+    for (const t of Object.values(this.teams)) {
+      const gt = g.teams[t.id];
+      if (!gt || !t.members.length) continue;
+      const n = t.members.length;
+      const base = (t.operatorStart + Math.max(0, g.day - 1)) % n;
+      let chosen: string | null = null;
+      for (let k = 0; k < n; k++) {
+        const cand = t.members[(base + k) % n]!;
+        if (this.isConnected(cand)) { chosen = cand; break; }
+      }
+      gt.operatorId = chosen ?? t.members[base]!;
+      if (chosen) this.toast([chosen], `${g.day}일 차 오늘의 점장이에요.`, 'success');
+    }
+  }
+
+  // ---------- 알람 (방 정리에만 쓴다) ----------
+  private async rescheduleAlarm(): Promise<void> {
+    const meta = this.meta!;
+    const cands: number[] = [];
+    if (meta.status === 'lobby') cands.push(meta.updatedAt + LOBBY_IDLE_MS);
+    if (meta.status === 'finished' && meta.finishedAt) cands.push(meta.finishedAt + FINISHED_KEEP_MS);
+    cands.push(meta.createdAt + MAX_AGE_MS);
+    await this.ctx.storage.setAlarm(Math.min(...cands));
+  }
+
+  async alarm(): Promise<void> {
+    await this.load();
+    const meta = this.meta;
+    if (!meta || meta.status === 'expired') return;
+    if (await this.maybeExpire()) return;
+    await this.save();
+    await this.rescheduleAlarm();
+  }
+
+  private async onGameFinished(): Promise<void> {
+    const meta = this.meta!;
+    meta.status = 'finished';
+    meta.finishedAt = Date.now();
+    await this.rescheduleAlarm();
+    this.notifyDirectory('finished');
+    this.toast('all', '영업이 모두 끝났어요. 결과를 확인하세요.', 'success');
+  }
+
+  private notifyDirectory(status: string): void {
+    const meta = this.meta!;
+    this.ctx.waitUntil(this.env.DIRECTORY.get(this.env.DIRECTORY.idFromName('main')).fetch(new Request('https://dir/status', { method: 'POST', body: JSON.stringify({ code: meta.code, status }) })).catch(() => {}));
+  }
+}

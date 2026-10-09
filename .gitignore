@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.wrangler/
+.env
+.env.local
+.dev.vars
+*.log
+.DS_Store
+Thumbs.db
+# 원본 그림(대용량)은 저장소에 넣지 않는다. 변환된 WebP(public/assets/images)는 커밋한다.
+assets-source/images/*.png
+assets-source/images/*.jpg
+reports/balance/runs/
+reports/balance/candidate-*.json
