@@ -1,389 +1,1218 @@
 {
-  "builtAt": "2026-10-09T12:06:01.399Z",
+  "builtAt": "2026-10-09T14:29:29.869Z",
   "images": [
     {
       "id": "bg-title",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        1600,
+        800
+      ],
+      "alpha": false,
+      "width": 1672,
+      "height": 941,
+      "kb": 162
     },
     {
       "id": "bg-lobby",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        1600,
+        800
+      ],
+      "alpha": false,
+      "width": 1672,
+      "height": 941,
+      "kb": 133
     },
     {
       "id": "bg-market",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        1600,
+        800
+      ],
+      "alpha": false,
+      "width": 1672,
+      "height": 941,
+      "kb": 175
     },
     {
       "id": "bg-kitchen",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        1600,
+        800
+      ],
+      "alpha": false,
+      "width": 1672,
+      "height": 941,
+      "kb": 153
     },
     {
       "id": "bg-counter",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        1600,
+        800
+      ],
+      "alpha": false,
+      "width": 1672,
+      "height": 941,
+      "kb": 136
     },
     {
       "id": "bg-closing",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        1600,
+        800
+      ],
+      "alpha": false,
+      "width": 1672,
+      "height": 941,
+      "kb": 124
     },
     {
       "id": "bg-results",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        1600,
+        800
+      ],
+      "alpha": false,
+      "width": 1672,
+      "height": 941,
+      "kb": 175
     },
     {
       "id": "menu-m01",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 82
     },
     {
       "id": "menu-m02",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 95
     },
     {
       "id": "menu-m03-hot",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 95
     },
     {
       "id": "menu-m03-coldbrew",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 76
     },
     {
       "id": "menu-m04",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 90
     },
     {
       "id": "menu-m05-fluffy",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 69
     },
     {
       "id": "menu-m05-plain",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 54
     },
     {
       "id": "menu-m06",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 68
     },
     {
       "id": "menu-m07",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 66
     },
     {
       "id": "menu-m08",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 66
     },
     {
       "id": "menu-m09",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 73
     },
     {
       "id": "menu-m10-puffed",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 73
     },
     {
       "id": "menu-m10-candy",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 58
     },
     {
       "id": "menu-m11-fluffy",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 56
     },
     {
       "id": "menu-m11-crepe",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 65
     },
     {
       "id": "menu-m12",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 66
     },
     {
       "id": "menu-m13-hot",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 40
     },
     {
       "id": "menu-m13-cold",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 48
     },
     {
       "id": "menu-fail",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 63
     },
     {
       "id": "ing-milk",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 29
     },
     {
       "id": "ing-cream",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 44
     },
     {
       "id": "ing-sugar",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 50
     },
     {
       "id": "ing-chocolate",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 59
     },
     {
       "id": "ing-tea",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 90
     },
     {
       "id": "ing-syrup",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 84
     },
     {
       "id": "ing-rice",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 60
     },
     {
       "id": "ing-marshmallow",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 53
     },
     {
       "id": "ing-liquid-nitrogen",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 55
     },
     {
       "id": "ing-dry-ice",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 65
     },
     {
       "id": "ing-coffee",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 54
     },
     {
       "id": "ing-co2",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 43
     },
     {
       "id": "ing-lemon",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 65
     },
     {
       "id": "ing-batter",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 79
     },
     {
       "id": "ing-baking-soda",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 55
     },
     {
       "id": "ing-reaction-pack",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 48
     },
     {
       "id": "eq-mixer",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 57
     },
     {
       "id": "eq-oven",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 64
     },
     {
       "id": "eq-puffer",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 106
     },
     {
       "id": "eq-packaging",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 61
     },
     {
       "id": "eq-carbonator",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 51
     },
     {
       "id": "eq-griddle",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 45
     },
     {
       "id": "eq-gas-stove",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 53
     },
     {
       "id": "cust-01",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 58
     },
     {
       "id": "cust-02",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 57
     },
     {
       "id": "cust-03",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 57
     },
     {
       "id": "cust-04",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 56
     },
     {
       "id": "cust-05",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 53
     },
     {
       "id": "cust-06",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 80
     },
     {
       "id": "cust-07",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 79
     },
     {
       "id": "cust-08",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 72
     },
     {
       "id": "cust-takeout",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 53
     },
     {
       "id": "cust-group",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 68
     },
     {
       "id": "mascot-cat",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 65
     },
     {
       "id": "mascot-dog",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 72
     },
     {
       "id": "mascot-rabbit",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 63
     },
     {
       "id": "mascot-bear",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 58
     },
     {
       "id": "mascot-fox",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 74
     },
     {
       "id": "mascot-penguin",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 62
     },
     {
       "id": "mascot-otter",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 68
     },
     {
       "id": "mascot-owl",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 69
     },
     {
       "id": "npc-guide",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        512,
+        256,
+        128
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 72
     },
     {
       "id": "weather-sunny",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 7
     },
     {
       "id": "weather-hot",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 13
     },
     {
       "id": "weather-cold",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 13
     },
     {
       "id": "ui-logo",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 8
     },
     {
       "id": "ui-coin",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 8
     },
     {
       "id": "ui-action",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 10
     },
     {
       "id": "ui-star",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 6
     },
     {
       "id": "ui-electric",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 9
     },
     {
       "id": "ui-tab-market",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 10
     },
     {
       "id": "ui-tab-kitchen",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 8
     },
     {
       "id": "ui-tab-counter",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 8
     },
     {
       "id": "ui-tab-note",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 11
     },
     {
       "id": "ui-stamp-closed",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": true,
+      "width": 1254,
+      "height": 1254,
+      "kb": 15
     },
     {
       "id": "ui-paper",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        128,
+        64
+      ],
+      "alpha": false,
+      "width": 1254,
+      "height": 1254,
+      "kb": 0
     },
     {
       "id": "principle-m01",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 61
     },
     {
       "id": "principle-m02",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 47
     },
     {
       "id": "principle-m03",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 52
     },
     {
       "id": "principle-m04",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 95
     },
     {
       "id": "principle-m05",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 40
     },
     {
       "id": "principle-m06",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 75
     },
     {
       "id": "principle-m07",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 61
     },
     {
       "id": "principle-m08",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 44
     },
     {
       "id": "principle-m09",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 65
     },
     {
       "id": "principle-m10",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 65
     },
     {
       "id": "principle-m11",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 75
     },
     {
       "id": "principle-m12",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 52
     },
     {
       "id": "principle-m13",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 52
     },
     {
       "id": "principle-gas-stove",
-      "status": "missing"
+      "status": "ok",
+      "variants": [
+        960,
+        480
+      ],
+      "alpha": false,
+      "width": 1448,
+      "height": 1086,
+      "kb": 54
     }
   ]
 }

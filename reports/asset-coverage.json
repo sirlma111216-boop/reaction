@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-09T12:18:10.470Z",
+  "generatedAt": "2026-10-09T14:29:41.936Z",
   "note": "파일이 없는 자산은 점선 상자(그림)와 무음(소리)으로 동작한다. 형식 문제만 실패로 친다.",
   "summary": {
     "images": 96,
-    "imagesOk": 0,
-    "imagesMissing": 96,
+    "imagesOk": 96,
+    "imagesMissing": 0,
     "imagesProblem": 0,
     "audio": 35,
     "audioOk": 0
@@ -16,17 +16,21 @@
       "group": "background",
       "recommended": "1920×1080",
       "usedIn": "타이틀",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "bg-title-1600.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 1600,
+          "height": 900,
+          "alpha": false
         },
         {
           "file": "bg-title-800.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 800,
+          "height": 450,
+          "alpha": false
         }
       ]
     },
@@ -36,17 +40,21 @@
       "group": "background",
       "recommended": "1920×1080",
       "usedIn": "대기실",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "bg-lobby-1600.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 1600,
+          "height": 900,
+          "alpha": false
         },
         {
           "file": "bg-lobby-800.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 800,
+          "height": 450,
+          "alpha": false
         }
       ]
     },
@@ -56,17 +64,21 @@
       "group": "background",
       "recommended": "1920×1080",
       "usedIn": "시장",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "bg-market-1600.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 1600,
+          "height": 900,
+          "alpha": false
         },
         {
           "file": "bg-market-800.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 800,
+          "height": 450,
+          "alpha": false
         }
       ]
     },
@@ -76,17 +88,21 @@
       "group": "background",
       "recommended": "1920×1080",
       "usedIn": "주방",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "bg-kitchen-1600.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 1600,
+          "height": 900,
+          "alpha": false
         },
         {
           "file": "bg-kitchen-800.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 800,
+          "height": 450,
+          "alpha": false
         }
       ]
     },
@@ -96,17 +112,21 @@
       "group": "background",
       "recommended": "1920×1080",
       "usedIn": "카운터",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "bg-counter-1600.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 1600,
+          "height": 900,
+          "alpha": false
         },
         {
           "file": "bg-counter-800.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 800,
+          "height": 450,
+          "alpha": false
         }
       ]
     },
@@ -116,17 +136,21 @@
       "group": "background",
       "recommended": "1920×1080",
       "usedIn": "하루 마감 영수증",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "bg-closing-1600.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 1600,
+          "height": 900,
+          "alpha": false
         },
         {
           "file": "bg-closing-800.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 800,
+          "height": 450,
+          "alpha": false
         }
       ]
     },
@@ -136,17 +160,21 @@
       "group": "background",
       "recommended": "1920×1080",
       "usedIn": "결과",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "bg-results-1600.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 1600,
+          "height": 900,
+          "alpha": false
         },
         {
           "file": "bg-results-800.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 800,
+          "height": 450,
+          "alpha": false
         }
       ]
     },
@@ -156,22 +184,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m01-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m01-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m01-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -181,22 +215,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m02-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m02-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m02-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -206,22 +246,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m03-hot-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m03-hot-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m03-hot-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -231,22 +277,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m03-coldbrew-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m03-coldbrew-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m03-coldbrew-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -256,22 +308,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m04-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m04-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m04-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -281,22 +339,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m05-fluffy-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m05-fluffy-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m05-fluffy-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -306,22 +370,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m05-plain-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m05-plain-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m05-plain-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -331,22 +401,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m06-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m06-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m06-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -356,22 +432,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m07-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m07-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m07-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -381,22 +463,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m08-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m08-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m08-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -406,22 +494,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m09-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m09-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m09-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -431,22 +525,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m10-puffed-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m10-puffed-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m10-puffed-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -456,22 +556,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m10-candy-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m10-candy-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m10-candy-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -481,22 +587,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m11-fluffy-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m11-fluffy-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m11-fluffy-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -506,22 +618,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m11-crepe-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m11-crepe-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m11-crepe-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -531,22 +649,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m12-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m12-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m12-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -556,22 +680,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "메뉴 카드, 만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m13-hot-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m13-hot-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m13-hot-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -581,22 +711,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "만들기 결과, 보관함, 손님 주문",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-m13-cold-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-m13-cold-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-m13-cold-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -606,22 +742,28 @@
       "group": "menu",
       "recommended": "1024×1024 투명",
       "usedIn": "만들기 결과(실패), 보관함",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "menu-fail-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "menu-fail-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "menu-fail-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -631,22 +773,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-milk-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-milk-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-milk-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -656,22 +804,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-cream-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-cream-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-cream-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -681,22 +835,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-sugar-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-sugar-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-sugar-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -706,22 +866,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-chocolate-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-chocolate-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-chocolate-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -731,22 +897,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-tea-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-tea-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-tea-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -756,22 +928,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-syrup-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-syrup-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-syrup-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -781,22 +959,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-rice-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-rice-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-rice-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -806,22 +990,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-marshmallow-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-marshmallow-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-marshmallow-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -831,22 +1021,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-liquid-nitrogen-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-liquid-nitrogen-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-liquid-nitrogen-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -856,22 +1052,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-dry-ice-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-dry-ice-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-dry-ice-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -881,22 +1083,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-coffee-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-coffee-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-coffee-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -906,22 +1114,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-co2-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-co2-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-co2-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -931,22 +1145,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-lemon-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-lemon-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-lemon-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -956,22 +1176,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-batter-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-batter-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-batter-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -981,22 +1207,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-baking-soda-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-baking-soda-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-baking-soda-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1006,22 +1238,28 @@
       "group": "ingredient",
       "recommended": "1024×1024 투명",
       "usedIn": "시장, 레시피",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ing-reaction-pack-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "ing-reaction-pack-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "ing-reaction-pack-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1031,22 +1269,28 @@
       "group": "equipment",
       "recommended": "1024×1024 투명",
       "usedIn": "시장의 장비 진열대, 주방, 원리 노트",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "eq-mixer-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "eq-mixer-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "eq-mixer-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1056,22 +1300,28 @@
       "group": "equipment",
       "recommended": "1024×1024 투명",
       "usedIn": "시장의 장비 진열대, 주방, 원리 노트",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "eq-oven-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "eq-oven-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "eq-oven-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1081,22 +1331,28 @@
       "group": "equipment",
       "recommended": "1024×1024 투명",
       "usedIn": "시장의 장비 진열대, 주방, 원리 노트",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "eq-puffer-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "eq-puffer-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "eq-puffer-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1106,22 +1362,28 @@
       "group": "equipment",
       "recommended": "1024×1024 투명",
       "usedIn": "시장의 장비 진열대, 주방, 원리 노트",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "eq-packaging-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "eq-packaging-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "eq-packaging-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1131,22 +1393,28 @@
       "group": "equipment",
       "recommended": "1024×1024 투명",
       "usedIn": "시장의 장비 진열대, 주방, 원리 노트",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "eq-carbonator-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "eq-carbonator-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "eq-carbonator-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1156,22 +1424,28 @@
       "group": "equipment",
       "recommended": "1024×1024 투명",
       "usedIn": "시장의 장비 진열대, 주방, 원리 노트",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "eq-griddle-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "eq-griddle-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "eq-griddle-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1181,22 +1455,28 @@
       "group": "equipment",
       "recommended": "1024×1024 투명",
       "usedIn": "주방, 원리 노트",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "eq-gas-stove-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "eq-gas-stove-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "eq-gas-stove-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1206,22 +1486,28 @@
       "group": "customer",
       "recommended": "1024×1024 투명",
       "usedIn": "카운터의 손님 줄",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "cust-01-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "cust-01-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "cust-01-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1231,22 +1517,28 @@
       "group": "customer",
       "recommended": "1024×1024 투명",
       "usedIn": "카운터의 손님 줄",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "cust-02-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "cust-02-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "cust-02-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1256,22 +1548,28 @@
       "group": "customer",
       "recommended": "1024×1024 투명",
       "usedIn": "카운터의 손님 줄",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "cust-03-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "cust-03-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "cust-03-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1281,22 +1579,28 @@
       "group": "customer",
       "recommended": "1024×1024 투명",
       "usedIn": "카운터의 손님 줄",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "cust-04-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "cust-04-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "cust-04-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1306,22 +1610,28 @@
       "group": "customer",
       "recommended": "1024×1024 투명",
       "usedIn": "카운터의 손님 줄",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "cust-05-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "cust-05-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "cust-05-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1331,22 +1641,28 @@
       "group": "customer",
       "recommended": "1024×1024 투명",
       "usedIn": "카운터의 손님 줄",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "cust-06-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "cust-06-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "cust-06-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1356,22 +1672,28 @@
       "group": "customer",
       "recommended": "1024×1024 투명",
       "usedIn": "카운터의 손님 줄",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "cust-07-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "cust-07-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "cust-07-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1381,22 +1703,28 @@
       "group": "customer",
       "recommended": "1024×1024 투명",
       "usedIn": "카운터의 손님 줄",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "cust-08-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "cust-08-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "cust-08-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1406,22 +1734,28 @@
       "group": "customer",
       "recommended": "1024×1024 투명",
       "usedIn": "카운터의 손님 줄",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "cust-takeout-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "cust-takeout-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "cust-takeout-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1431,22 +1765,28 @@
       "group": "customer",
       "recommended": "1024×1024 투명",
       "usedIn": "단체 주문 게시판",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "cust-group-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "cust-group-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "cust-group-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1456,22 +1796,28 @@
       "group": "mascot",
       "recommended": "1024×1024 투명",
       "usedIn": "팀 간판 (대기실, 상단 바, 결과, 교사 보드)",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "mascot-cat-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "mascot-cat-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "mascot-cat-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1481,22 +1827,28 @@
       "group": "mascot",
       "recommended": "1024×1024 투명",
       "usedIn": "팀 간판 (대기실, 상단 바, 결과, 교사 보드)",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "mascot-dog-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "mascot-dog-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "mascot-dog-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1506,22 +1858,28 @@
       "group": "mascot",
       "recommended": "1024×1024 투명",
       "usedIn": "팀 간판 (대기실, 상단 바, 결과, 교사 보드)",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "mascot-rabbit-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "mascot-rabbit-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "mascot-rabbit-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1531,22 +1889,28 @@
       "group": "mascot",
       "recommended": "1024×1024 투명",
       "usedIn": "팀 간판 (대기실, 상단 바, 결과, 교사 보드)",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "mascot-bear-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "mascot-bear-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "mascot-bear-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1556,22 +1920,28 @@
       "group": "mascot",
       "recommended": "1024×1024 투명",
       "usedIn": "팀 간판 (대기실, 상단 바, 결과, 교사 보드)",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "mascot-fox-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "mascot-fox-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "mascot-fox-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1581,22 +1951,28 @@
       "group": "mascot",
       "recommended": "1024×1024 투명",
       "usedIn": "팀 간판 (대기실, 상단 바, 결과, 교사 보드)",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "mascot-penguin-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "mascot-penguin-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "mascot-penguin-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1606,22 +1982,28 @@
       "group": "mascot",
       "recommended": "1024×1024 투명",
       "usedIn": "팀 간판 (대기실, 상단 바, 결과, 교사 보드)",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "mascot-otter-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "mascot-otter-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "mascot-otter-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1631,22 +2013,28 @@
       "group": "mascot",
       "recommended": "1024×1024 투명",
       "usedIn": "팀 간판 (대기실, 상단 바, 결과, 교사 보드)",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "mascot-owl-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "mascot-owl-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "mascot-owl-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1656,22 +2044,28 @@
       "group": "mascot",
       "recommended": "1024×1024 투명",
       "usedIn": "도움말과 안내 한 줄 옆",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "npc-guide-512.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 512,
+          "height": 512,
+          "alpha": true
         },
         {
           "file": "npc-guide-256.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 256,
+          "height": 256,
+          "alpha": true
         },
         {
           "file": "npc-guide-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         }
       ]
     },
@@ -1681,17 +2075,21 @@
       "group": "weather",
       "recommended": "512×512 투명",
       "usedIn": "상단 바의 오늘 날씨와 내일 예보",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "weather-sunny-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "weather-sunny-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1701,17 +2099,21 @@
       "group": "weather",
       "recommended": "512×512 투명",
       "usedIn": "상단 바의 오늘 날씨와 내일 예보",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "weather-hot-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "weather-hot-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1721,17 +2123,21 @@
       "group": "weather",
       "recommended": "512×512 투명",
       "usedIn": "상단 바의 오늘 날씨와 내일 예보",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "weather-cold-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "weather-cold-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1741,17 +2147,21 @@
       "group": "ui",
       "recommended": "512×512 투명",
       "usedIn": "타이틀, 파비콘",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ui-logo-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "ui-logo-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1761,17 +2171,21 @@
       "group": "ui",
       "recommended": "512×512 투명",
       "usedIn": "코인 수치 옆",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ui-coin-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "ui-coin-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1781,17 +2195,21 @@
       "group": "ui",
       "recommended": "512×512 투명",
       "usedIn": "남은 행동 옆",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ui-action-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "ui-action-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1801,17 +2219,21 @@
       "group": "ui",
       "recommended": "512×512 투명",
       "usedIn": "별점 옆",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ui-star-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "ui-star-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1821,17 +2243,21 @@
       "group": "ui",
       "recommended": "512×512 투명",
       "usedIn": "전기 요금 옆",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ui-electric-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "ui-electric-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1841,17 +2267,21 @@
       "group": "ui",
       "recommended": "512×512 투명",
       "usedIn": "장소 전환 탭",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ui-tab-market-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "ui-tab-market-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1861,17 +2291,21 @@
       "group": "ui",
       "recommended": "512×512 투명",
       "usedIn": "장소 전환 탭",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ui-tab-kitchen-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "ui-tab-kitchen-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1881,17 +2315,21 @@
       "group": "ui",
       "recommended": "512×512 투명",
       "usedIn": "장소 전환 탭",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ui-tab-counter-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "ui-tab-counter-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1901,17 +2339,21 @@
       "group": "ui",
       "recommended": "512×512 투명",
       "usedIn": "장소 전환 탭",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ui-tab-note-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "ui-tab-note-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1921,17 +2363,21 @@
       "group": "ui",
       "recommended": "512×512 투명",
       "usedIn": "마감한 팀 표시, 영수증",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ui-stamp-closed-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": true
         },
         {
           "file": "ui-stamp-closed-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": true
         }
       ]
     },
@@ -1941,17 +2387,21 @@
       "group": "ui",
       "recommended": "512×512",
       "usedIn": "바탕 (반복 타일)",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "ui-paper-128.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 128,
+          "height": 128,
+          "alpha": false
         },
         {
           "file": "ui-paper-64.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 64,
+          "height": 64,
+          "alpha": false
         }
       ]
     },
@@ -1961,17 +2411,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m01-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m01-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -1981,17 +2435,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m02-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m02-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2001,17 +2459,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m03-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m03-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2021,17 +2483,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m04-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m04-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2041,17 +2507,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m05-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m05-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2061,17 +2531,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m06-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m06-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2081,17 +2555,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m07-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m07-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2101,17 +2579,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m08-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m08-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2121,17 +2603,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m09-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m09-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2141,17 +2627,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m10-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m10-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2161,17 +2651,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m11-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m11-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2181,17 +2675,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m12-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m12-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2201,17 +2699,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-m13-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-m13-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     },
@@ -2221,17 +2723,21 @@
       "group": "principle",
       "recommended": "1280×960",
       "usedIn": "원리 노트 카드",
-      "status": "missing",
+      "status": "ok",
       "files": [
         {
           "file": "principle-gas-stove-960.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 960,
+          "height": 720,
+          "alpha": false
         },
         {
           "file": "principle-gas-stove-480.webp",
-          "ok": false,
-          "reason": "파일 없음"
+          "ok": true,
+          "width": 480,
+          "height": 360,
+          "alpha": false
         }
       ]
     }
