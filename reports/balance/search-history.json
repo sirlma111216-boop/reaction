@@ -1,0 +1,203 @@
+{
+  "baseline": -28,
+  "history": [
+    {
+      "loop": 1,
+      "changes": [
+        "twoServingRate 0.7→0.6"
+      ],
+      "objective": -28.86,
+      "accepted": false
+    },
+    {
+      "loop": 2,
+      "changes": [
+        "menu.M10 4→5",
+        "tipPerServing 1→0",
+        "electricity.M11 2→1"
+      ],
+      "objective": -20,
+      "accepted": true
+    },
+    {
+      "loop": 3,
+      "changes": [
+        "tipPerServing 0→1",
+        "twoServingRate 0.7→0.6"
+      ],
+      "objective": -50.67,
+      "accepted": false
+    },
+    {
+      "loop": 4,
+      "changes": [
+        "equipment.carbonator 8→9",
+        "tipPerServing 0→1"
+      ],
+      "objective": -10.5,
+      "accepted": true
+    },
+    {
+      "loop": 5,
+      "changes": [
+        "equipment.carbonator 9→10"
+      ],
+      "objective": -38.33,
+      "accepted": false
+    },
+    {
+      "loop": 7,
+      "changes": [
+        "startCoins 20→18"
+      ],
+      "objective": -43.38,
+      "accepted": false
+    },
+    {
+      "loop": 8,
+      "changes": [
+        "ingredient.co2 2→3"
+      ],
+      "objective": -12,
+      "accepted": false
+    },
+    {
+      "loop": 9,
+      "changes": [
+        "groupBonus 6→4",
+        "startCoins 20→18"
+      ],
+      "objective": -25.85,
+      "accepted": false
+    },
+    {
+      "loop": 10,
+      "changes": [
+        "tipPerServing 1→2",
+        "equipment.packaging 6→7"
+      ],
+      "objective": -73.5,
+      "accepted": false
+    },
+    {
+      "loop": 11,
+      "changes": [
+        "ingredient.reaction-pack 2→3",
+        "menu.M03:coldbrew 5→4",
+        "groupBonus 6→8"
+      ],
+      "objective": -28,
+      "accepted": false
+    },
+    {
+      "loop": 12,
+      "changes": [
+        "equipment.oven 6→5",
+        "electricity.M01 1→2"
+      ],
+      "objective": -30,
+      "accepted": false
+    },
+    {
+      "loop": 13,
+      "changes": [
+        "groupBonus 6→4",
+        "menu.M12 5→4",
+        "menu.M07 9→8"
+      ],
+      "objective": -30.67,
+      "accepted": false
+    },
+    {
+      "loop": 14,
+      "changes": [
+        "menu.M06 5→6",
+        "twoServingRate 0.7→0.8"
+      ],
+      "objective": -56,
+      "accepted": false
+    },
+    {
+      "loop": 15,
+      "changes": [
+        "groupBonus 6→4",
+        "startCoins 20→22"
+      ],
+      "objective": -8,
+      "accepted": true
+    },
+    {
+      "loop": 16,
+      "changes": [
+        "startCoins 22→24",
+        "ingredient.cream 2→1"
+      ],
+      "objective": -33.33,
+      "accepted": false
+    },
+    {
+      "loop": 17,
+      "changes": [
+        "twoServingRate 0.7→0.8",
+        "menu.M02 6→7"
+      ],
+      "objective": -36.92,
+      "accepted": false
+    },
+    {
+      "loop": 18,
+      "changes": [
+        "ingredient.coffee 2→3"
+      ],
+      "objective": -37.71,
+      "accepted": false
+    },
+    {
+      "loop": 19,
+      "changes": [
+        "twoServingRate 0.7→0.6",
+        "startCoins 22→24"
+      ],
+      "objective": -20,
+      "accepted": false
+    },
+    {
+      "loop": 20,
+      "changes": [
+        "tipPerServing 1→2",
+        "menu.M05 9→10",
+        "groupBonus 4→2"
+      ],
+      "objective": -26.67,
+      "accepted": false
+    },
+    {
+      "loop": 22,
+      "changes": [
+        "equipment.oven 6→7"
+      ],
+      "objective": -34.67,
+      "accepted": false
+    },
+    {
+      "loop": 23,
+      "changes": [
+        "equipment.griddle 7→6",
+        "menu.M12 5→4"
+      ],
+      "objective": -28.31,
+      "accepted": false
+    },
+    {
+      "loop": 24,
+      "changes": [
+        "groupBonus 4→2",
+        "menu.M01 11→12"
+      ],
+      "objective": -30.5,
+      "accepted": false
+    }
+  ],
+  "selectedVersion": "economy-1.1+c15",
+  "elapsedMs": 13393
+}

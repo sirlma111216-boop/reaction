@@ -2,6 +2,7 @@ import type { CommandResult, GameState, Product, TeamCommand, TeamState } from '
 import { EQUIPMENT, INGREDIENTS, MENUS, PRESETS, choiceElectricity, choiceUses, resultReady } from '../content';
 import { equipmentPrice, hasEquipment, ingredientPrice, isLastDay, logEvent, newId, presetOf, readyDayOf, shopIngredients } from './state';
 import { activeGroupOrders } from './customers';
+import { josa } from '../josa';
 import { availableProducts, isFailResult, quoteGroup, quoteServe } from './scoring';
 
 /**
@@ -61,7 +62,7 @@ function buy(state: GameState, team: TeamState, items: { ingredientId: string; u
   team.today.ingredients += cost;
   for (const id of kinds) team.stock[id] = (team.stock[id] ?? 0) + merged[id]!;
   team.actionsLeft -= 1;
-  logEvent(state, team.id, 'buy', `${kinds.map((id) => `${INGREDIENTS[id]!.name} ${merged[id]}`).join(', ')}을(를) ${cost}코인에 샀어요.`);
+  logEvent(state, team.id, 'buy', `${kinds.map((id) => `${INGREDIENTS[id]!.name} ${merged[id]}`).join(', ')}${josa(String(merged[kinds[kinds.length - 1]!]), '을/를')} ${cost}코인에 샀어요.`);
   return { ok: true, paid: cost };
 }
 
@@ -77,7 +78,7 @@ function equip(state: GameState, team: TeamState, equipmentId: string): CommandR
   team.today.equipment += price;
   team.equipment.push(equipmentId);
   team.actionsLeft -= 1;
-  logEvent(state, team.id, 'equip', `${eq.name}을(를) ${price}코인에 설치했어요.`);
+  logEvent(state, team.id, 'equip', `${eq.name}${josa(eq.name, '을/를')} ${price}코인에 설치했어요.`);
   return { ok: true, paid: price };
 }
 

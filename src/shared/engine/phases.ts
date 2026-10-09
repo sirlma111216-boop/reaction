@@ -2,6 +2,7 @@ import type { FinalTeamResult, GameState, TeamState } from '../types';
 import { MENUS } from '../content';
 import { admitCustomers, generateCustomers, generateGroupOrders, generateWeather } from './customers';
 import { emptyLedger, logEvent } from './state';
+import { josa } from '../josa';
 
 /**
  * 하루의 흐름. 정산 순서는 9.2-8 로 고정한다:
@@ -23,7 +24,7 @@ function openDayFor(state: GameState, team: TeamState): void {
   team.pins = [];
   team.today = emptyLedger(state.day, team.receipts.length ? team.receipts[team.receipts.length - 1]!.cumulative : 0);
   // 하룻밤 음식 완성 (readyDay 가 오늘인 것)
-  for (const p of team.products) if (p.readyDay === state.day && p.madeDay < state.day) logEvent(state, team.id, 'ready', `${MENUS[p.menuId]!.results[p.result]!.name}이(가) 완성됐어요.`);
+  for (const p of team.products) if (p.readyDay === state.day && p.madeDay < state.day) logEvent(state, team.id, 'ready', `${MENUS[p.menuId]!.results[p.result]!.name}${josa(MENUS[p.menuId]!.results[p.result]!.name, '이/가')} 완성됐어요.`);
   // 3.7 막힘 방지: 코인이 4보다 적고 재료와 보관함이 모두 비어 있으면 코인을 4로 채운다
   const stockEmpty = Object.values(team.stock).every((n) => n <= 0);
   if (team.coins < state.config.aidThreshold && stockEmpty && team.products.length === 0) {

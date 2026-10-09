@@ -81,7 +81,7 @@ export function CounterPlace({ game, team, act, canAct, pins, onPin }: { game: G
               if (!q) return null;
               const res = MENUS[sel.order.menuId]!.results[r]!;
               return (
-                <button key={r} className="serve-option" onClick={async () => { const x = await act({ type: 'serve', orderId: sel.order.id, result: r }); if (x.ok) onServed(x.stars ?? q.stars, x.paid ?? q.total); }}>
+                <button key={r} className="serve-option" aria-label={`${res.name} 내기, 별 ${q.stars}개, ${q.total}코인`} onClick={async () => { const x = await act({ type: 'serve', orderId: sel.order.id, result: r }); if (x.ok) onServed(x.stars ?? q.stars, x.paid ?? q.total); }}>
                   <AssetImage id={foodImage(sel.order.menuId, r, res.fail)} size={56} />
                   <span className="stack-sm">
                     <b>{res.name}</b>
@@ -105,7 +105,7 @@ export function CounterPlace({ game, team, act, canAct, pins, onPin }: { game: G
                 if (!q) return null;
                 const res = MENUS[g.menuId]!.results[r]!;
                 return (
-                  <button key={r} className="serve-option" onClick={async () => { const x = await act({ type: 'serveGroup', groupOrderId: g.id, result: r }); if (x.ok) onServed(x.stars ?? q.stars, x.paid ?? q.total); }}>
+                  <button key={r} className="serve-option" aria-label={`${res.name} 내기, 별 ${q.stars}개, ${q.total}코인`} onClick={async () => { const x = await act({ type: 'serveGroup', groupOrderId: g.id, result: r }); if (x.ok) onServed(x.stars ?? q.stars, x.paid ?? q.total); }}>
                     <AssetImage id={foodImage(g.menuId, r, res.fail)} size={56} />
                     <span className="stack-sm"><b>{res.name}</b><Stars n={q.stars} size={14} /><span className="small">예상 <Coins n={q.total} /></span></span>
                   </button>

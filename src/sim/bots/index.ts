@@ -116,10 +116,10 @@ export const BOTS: Record<BotId, Bot> = {
     id: 'investor',
     day: (state, teamId, ctx) => runPolicy(state, teamId, ctx, {
       choose: chooseCorrect,
+      // 장비 투자 봇: 처음 3일 동안 장비를 최대 3대까지 일찍 산다 (가격이 높은 메뉴의 장비부터)
       equip: (s, t) => {
         const team = s.teams[t]!;
-        const remaining = s.daysTotal - s.day + 1;
-        if (remaining < 2 || team.actionsLeft < 1) return null;
+        if (s.day > 3 || team.equipment.length >= 3 || team.actionsLeft < 1) return null;
         const c = equipmentCandidates(s, team).filter((x) => x.id !== 'packaging')[0] ?? equipmentCandidates(s, team)[0];
         if (c && team.coins >= c.price + 4) return c.id;
         return null;

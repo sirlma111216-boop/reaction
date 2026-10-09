@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react';
 import type { GameView } from '../../shared/protocol';
 import type { TeamState } from '../../shared/types';
 import { EQUIPMENT, INGREDIENTS, MENUS, PRESETS, choiceElectricity, choiceUses, foodImage, resultReady, type Choice, type Menu } from '../../shared/content';
+import { josa } from '../../shared/josa';
+import { subRng } from '../../shared/engine/rng';
 import { AssetImage } from '../components/AssetImage';
 import { Coins, Modal, Tag } from '../components/common';
 import { ResultScience } from '../components/Science';
@@ -49,7 +51,7 @@ export function KitchenPlace({ game, team, act, canAct, pins, onPin }: { game: G
                   {wanted.has(mid) && <Tag tone="coral">손님이 찾아요</Tag>}
                   {st.kind === 'ok' && <Tag tone="mint">만들 수 있어요</Tag>}
                   {st.kind === 'ingredients' && <Tag tone="line">재료가 모자라요: {st.missing.join(', ')}</Tag>}
-                  {st.kind === 'equipment' && <Tag tone="line">{EQUIPMENT[st.equipment]?.name}가 필요해요</Tag>}
+                  {st.kind === 'equipment' && <Tag tone="line">{EQUIPMENT[st.equipment]?.name}{josa(EQUIPMENT[st.equipment]?.name ?? '', '이/가')} 필요해요</Tag>}
                   {pins[`menu:${mid}`] && <Tag tone="butter">추천 {pins[`menu:${mid}`]}</Tag>}
                 </button>
               </div>
@@ -132,7 +134,7 @@ function MakeFlow({ game, team, menuId, act, onClose }: { game: GameView; team: 
       {step === 2 && (
         <div className="stack">
           <p className="question">{m.question}</p>
-          <ChoicePicker menu={m} value={choice} onChange={setChoice} />
+          <ChoicePicker menu={m} value={choice} onChange={setChoice} shuffleKey={`${game.presetId}:${game.day}:${team.id}`} />
           <div className="row-between">
             <button className="btn btn-ghost btn-sm" onClick={showHint}>원리 힌트</button>
             {chosen && <span className="small">{chosen.label}</span>}
@@ -178,7 +180,7 @@ export function ResultView({ menuId, result, presetId, onClose }: { menuId: stri
 }
 
 /** 질문 종류에 따른 선택 조작: 단일 선택, 두 질문 조합(M07), 순서 배열(M08) */
-function ChoicePicker({ menu, value, onChange }: { menu: Menu; value: string | null; onChange: (id: string) => void }) {
+function ChoicePicker({ menu, value, onChange, shuffleKey }: { menu: Menu; value: string | null; onChange: (id: string) => void; shuffleKey: string }) {
   if (menu.ui.kind === 'single') {
     return (
       <div className="choice-list" role="radiogroup">
@@ -189,7 +191,7 @@ function ChoicePicker({ menu, value, onChange }: { menu: Menu; value: string | n
     );
   }
   if (menu.ui.kind === 'two') return <TwoQuestions menu={menu} value={value} onChange={onChange} />;
-  return <OrderPicker menu={menu} value={value} onChange={onChange} />;
+  return <OrderPicker menu={menu} value={value} onChange={onChange} shuffleKey={shuffleKey} />;
 }
 
 function TwoQuestions({ menu, value, onChange }: { menu: Menu; value: string | null; onChange: (id: string) => void }) {
@@ -218,10 +220,11 @@ function TwoQuestions({ menu, value, onChange }: { menu: Menu; value: string | n
 }
 
 /** 세 액체의 제시 순서는 시드·날짜·팀으로 섞인다 (부모가 넘긴 value 가 없으면 기본 순서) */
-function OrderPicker({ menu, value, onChange }: { menu: Menu; value: string | null; onChange: (id: string) => void }) {
+function OrderPicker({ menu, value, onChange, shuffleKey }: { menu: Menu; value: string | null; onChange: (id: string) => void; shuffleKey: string }) {
   const ui = menu.ui as Extract<Menu['ui'], { kind: 'order' }>;
   const [order, setOrder] = useState<string[]>(value ? value.split('>') : []);
-  const remaining = ui.liquids.filter((l) => !order.includes(l.ingredientId));
+  const liquids = useMemo(() => subRng(shuffleKey, 'm08').shuffle(ui.liquids), [shuffleKey, ui.liquids]);
+  const remaining = liquids.filter((l) => !order.includes(l.ingredientId));
   const push = (id: string) => {
     const next = [...order, id];
     setOrder(next);

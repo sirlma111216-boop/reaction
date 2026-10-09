@@ -1,0 +1,232 @@
+{
+  "title": "final validation",
+  "when": "2026-10-09T12:11:57.365Z",
+  "seedPrefix": "valid",
+  "games": 2000,
+  "configVersion": "economy-1.2",
+  "contentVersion": "cafe-content-1.0",
+  "summary": {
+    "games": 2000,
+    "teamsPerGame": 5,
+    "errors": 0,
+    "byBot": {
+      "expert": {
+        "n": 2000,
+        "netMean": 151.77,
+        "netMedian": 151,
+        "winRate": 0.37,
+        "firstSaleDay1": 1,
+        "served": 26.22,
+        "avgStars": 2.95,
+        "wasteRate": 0.03
+      },
+      "learner": {
+        "n": 2000,
+        "netMean": 120.62,
+        "netMedian": 119,
+        "winRate": 0.04,
+        "firstSaleDay1": 1,
+        "served": 26.08,
+        "avgStars": 2.44,
+        "wasteRate": 0.03
+      },
+      "investor": {
+        "n": 2000,
+        "netMean": 145.43,
+        "netMedian": 146,
+        "winRate": 0.24,
+        "firstSaleDay1": 1,
+        "served": 24.71,
+        "avgStars": 2.98,
+        "wasteRate": 0.01
+      },
+      "frugal": {
+        "n": 2000,
+        "netMean": 148.42,
+        "netMedian": 148,
+        "winRate": 0.35,
+        "firstSaleDay1": 1,
+        "served": 29.42,
+        "avgStars": 2.91,
+        "wasteRate": 0.04
+      },
+      "random": {
+        "n": 2000,
+        "netMean": -14.45,
+        "netMedian": -20,
+        "winRate": 0,
+        "firstSaleDay1": 0.11,
+        "served": 5.46,
+        "avgStars": 1.39,
+        "wasteRate": 0.32
+      }
+    },
+    "byPosition": {
+      "0": {
+        "n": 2000,
+        "winRate": 0.18,
+        "netMean": 109.73
+      },
+      "1": {
+        "n": 2000,
+        "winRate": 0.21,
+        "netMean": 110.59
+      },
+      "2": {
+        "n": 2000,
+        "winRate": 0.21,
+        "netMean": 110.73
+      },
+      "3": {
+        "n": 2000,
+        "winRate": 0.19,
+        "netMean": 110.19
+      },
+      "4": {
+        "n": 2000,
+        "winRate": 0.2,
+        "netMean": 110.57
+      }
+    },
+    "firstSaleDay1Rate": 1,
+    "positionSpreadPct": 3,
+    "expertVsLearnerPct": 26.89,
+    "investorWinRate": 0.24,
+    "frugalWinRate": 0.35,
+    "dominantMenu": {
+      "menuId": "M13",
+      "share": 0.17
+    },
+    "paybackMedian": 2,
+    "paybackN": 8359,
+    "expertWasteRate": 0.03,
+    "randomNetMedian": -20,
+    "targets": {
+      "errors": {
+        "target": "0건",
+        "value": "0",
+        "ok": true
+      },
+      "firstSaleDay1": {
+        "target": "95% 이상",
+        "value": "99.9%",
+        "ok": true
+      },
+      "positionSpread": {
+        "target": "3%p 이하",
+        "value": "3.0%p",
+        "ok": true
+      },
+      "expertVsLearner": {
+        "target": "15~35%",
+        "value": "26.9% (expert 151, learner 119)",
+        "ok": true
+      },
+      "investorVsFrugal": {
+        "target": "어느 쪽도 2배 미만",
+        "value": "investor 24.0% vs frugal 35.0% (비 1.46)",
+        "ok": true
+      },
+      "dominantMenu": {
+        "target": "30% 이하 (3학년 메뉴판)",
+        "value": "M13 17.0%",
+        "ok": true
+      },
+      "payback": {
+        "target": "2~4일 (중앙값)",
+        "value": "2일 (n=8359)",
+        "ok": true
+      },
+      "expertWaste": {
+        "target": "15% 이하",
+        "value": "3.0%",
+        "ok": true
+      },
+      "randomNet": {
+        "target": "0 근처 또는 음수",
+        "value": "-20",
+        "ok": true
+      }
+    },
+    "objective": 0
+  },
+  "config": {
+    "version": "economy-1.2",
+    "startCoins": 20,
+    "actionsPerDay": 3,
+    "servingsPerMake": 2,
+    "buyMaxKinds": 4,
+    "buyMaxUnits": 6,
+    "customersPerDay": 3,
+    "customerWaitDays": 2,
+    "queueMax": 8,
+    "tipPerServing": 1,
+    "weatherBonusPerServing": 1,
+    "groupServings": 4,
+    "groupBonus": 6,
+    "takeoutBonus": 2,
+    "twoServingRate": 0.7,
+    "aidThreshold": 4,
+    "aidCoins": 4,
+    "ingredientPrices": {
+      "milk": 1,
+      "cream": 2,
+      "sugar": 1,
+      "chocolate": 2,
+      "tea": 1,
+      "syrup": 2,
+      "rice": 1,
+      "marshmallow": 1,
+      "liquid-nitrogen": 3,
+      "dry-ice": 2,
+      "coffee": 2,
+      "co2": 2,
+      "lemon": 1,
+      "batter": 2,
+      "baking-soda": 1,
+      "reaction-pack": 2
+    },
+    "equipmentPrices": {
+      "mixer": 8,
+      "oven": 6,
+      "puffer": 6,
+      "packaging": 6,
+      "carbonator": 8,
+      "griddle": 7
+    },
+    "menuPrices": {
+      "M01": 12,
+      "M02": 6,
+      "M03": 3,
+      "M03:hot": 3,
+      "M03:coldbrew": 5,
+      "M04": 8,
+      "M05": 10,
+      "M06": 5,
+      "M07": 10,
+      "M08": 7,
+      "M09": 6,
+      "M10": 4,
+      "M11": 11,
+      "M12": 5,
+      "M13": 7
+    },
+    "electricity": {
+      "M01": 1,
+      "M02": 0,
+      "M03": 0,
+      "M04": 0,
+      "M05": 1,
+      "M06": 0,
+      "M07": 0,
+      "M08": 0,
+      "M09": 0,
+      "M10": 0,
+      "M11": 2,
+      "M12": 0,
+      "M13": 0
+    }
+  },
+  "failures": [],
+  "elapsedMs": 3539
+}

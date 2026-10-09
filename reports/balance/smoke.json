@@ -1,110 +1,105 @@
 {
   "title": "smoke",
-  "when": "2026-10-09T11:48:59.518Z",
+  "when": "2026-10-09T12:18:11.900Z",
   "seedPrefix": "smoke",
-  "games": 60,
-  "configVersion": "economy-1.0",
+  "games": 100,
+  "configVersion": "economy-1.2",
   "contentVersion": "cafe-content-1.0",
   "summary": {
-    "games": 60,
-    "teamsPerGame": 6,
+    "games": 100,
+    "teamsPerGame": 5,
     "errors": 0,
     "byBot": {
       "expert": {
-        "n": 72,
-        "netMean": 145.75,
+        "n": 100,
+        "netMean": 146.64,
         "netMedian": 142.5,
-        "winRate": 0.35,
+        "winRate": 0.42,
         "firstSaleDay1": 1,
-        "served": 28.6,
-        "avgStars": 2.93,
-        "wasteRate": 0.05
+        "served": 24.95,
+        "avgStars": 2.96,
+        "wasteRate": 0.03
       },
       "learner": {
-        "n": 72,
-        "netMean": 127.01,
-        "netMedian": 125,
-        "winRate": 0.03,
-        "firstSaleDay1": 1,
-        "served": 28.53,
-        "avgStars": 2.56,
-        "wasteRate": 0.05
-      },
-      "investor": {
-        "n": 72,
-        "netMean": 104.94,
-        "netMedian": 105.5,
+        "n": 100,
+        "netMean": 115.28,
+        "netMedian": 112,
         "winRate": 0.06,
         "firstSaleDay1": 1,
-        "served": 22.56,
-        "avgStars": 2.98,
+        "served": 24.78,
+        "avgStars": 2.41,
+        "wasteRate": 0.03
+      },
+      "investor": {
+        "n": 100,
+        "netMean": 138.45,
+        "netMedian": 143,
+        "winRate": 0.21,
+        "firstSaleDay1": 1,
+        "served": 23.45,
+        "avgStars": 2.99,
         "wasteRate": 0.01
       },
       "frugal": {
-        "n": 72,
-        "netMean": 146.24,
-        "netMedian": 143.5,
-        "winRate": 0.4,
+        "n": 100,
+        "netMean": 140.43,
+        "netMedian": 137,
+        "winRate": 0.31,
         "firstSaleDay1": 1,
-        "served": 28.99,
-        "avgStars": 2.91,
+        "served": 27.72,
+        "avgStars": 2.9,
         "wasteRate": 0.05
       },
       "random": {
-        "n": 72,
-        "netMean": -15.04,
+        "n": 100,
+        "netMean": -14.74,
         "netMedian": -20,
         "winRate": 0,
-        "firstSaleDay1": 0.14,
-        "served": 5.28,
-        "avgStars": 1.43,
-        "wasteRate": 0.32
+        "firstSaleDay1": 0.15,
+        "served": 4.93,
+        "avgStars": 1.39,
+        "wasteRate": 0.31
       }
     },
     "byPosition": {
       "0": {
-        "n": 60,
-        "winRate": 0.15,
-        "netMean": 102.67
+        "n": 100,
+        "winRate": 0.26,
+        "netMean": 104.48
       },
       "1": {
-        "n": 60,
-        "winRate": 0.2,
-        "netMean": 101
+        "n": 100,
+        "winRate": 0.16,
+        "netMean": 106.85
       },
       "2": {
-        "n": 60,
-        "winRate": 0.13,
-        "netMean": 102.02
+        "n": 100,
+        "winRate": 0.17,
+        "netMean": 105.3
       },
       "3": {
-        "n": 60,
-        "winRate": 0.22,
-        "netMean": 102.25
+        "n": 100,
+        "winRate": 0.18,
+        "netMean": 103.32
       },
       "4": {
-        "n": 60,
-        "winRate": 0.17,
-        "netMean": 99.95
-      },
-      "5": {
-        "n": 60,
-        "winRate": 0.13,
-        "netMean": 102.8
+        "n": 100,
+        "winRate": 0.23,
+        "netMean": 106.11
       }
     },
     "firstSaleDay1Rate": 1,
-    "positionSpreadPct": 9,
-    "expertVsLearnerPct": 14,
-    "investorWinRate": 0.06,
-    "frugalWinRate": 0.4,
+    "positionSpreadPct": 10,
+    "expertVsLearnerPct": 27.23,
+    "investorWinRate": 0.21,
+    "frugalWinRate": 0.31,
     "dominantMenu": {
-      "menuId": "M02",
-      "share": 0.21
+      "menuId": "M13",
+      "share": 0.15
     },
-    "paybackMedian": 3,
-    "paybackN": 176,
-    "expertWasteRate": 0.05,
+    "paybackMedian": 2,
+    "paybackN": 441,
+    "expertWasteRate": 0.03,
     "randomNetMedian": -20,
     "targets": {
       "errors": {
@@ -119,32 +114,32 @@
       },
       "positionSpread": {
         "target": "3%p 이하",
-        "value": "9.0%p",
+        "value": "10.0%p",
         "ok": false
       },
       "expertVsLearner": {
         "target": "15~35%",
-        "value": "14.0% (expert 142.5, learner 125)",
-        "ok": false
+        "value": "27.2% (expert 142.5, learner 112)",
+        "ok": true
       },
       "investorVsFrugal": {
         "target": "어느 쪽도 2배 미만",
-        "value": "investor 6.0% vs frugal 40.0% (비 6.67)",
-        "ok": false
+        "value": "investor 21.0% vs frugal 31.0% (비 1.48)",
+        "ok": true
       },
       "dominantMenu": {
         "target": "30% 이하 (3학년 메뉴판)",
-        "value": "M02 21.0%",
+        "value": "M13 15.0%",
         "ok": true
       },
       "payback": {
         "target": "2~4일 (중앙값)",
-        "value": "3일 (n=176)",
+        "value": "2일 (n=441)",
         "ok": true
       },
       "expertWaste": {
         "target": "15% 이하",
-        "value": "5.0%",
+        "value": "3.0%",
         "ok": true
       },
       "randomNet": {
@@ -153,10 +148,10 @@
         "ok": true
       }
     },
-    "objective": -118.83
+    "objective": -28
   },
   "config": {
-    "version": "economy-1.0",
+    "version": "economy-1.2",
     "startCoins": 20,
     "actionsPerDay": 3,
     "servingsPerMake": 2,
@@ -200,19 +195,19 @@
       "griddle": 7
     },
     "menuPrices": {
-      "M01": 9,
+      "M01": 12,
       "M02": 6,
       "M03": 3,
       "M03:hot": 3,
       "M03:coldbrew": 5,
-      "M04": 5,
-      "M05": 7,
+      "M04": 8,
+      "M05": 10,
       "M06": 5,
-      "M07": 7,
+      "M07": 10,
       "M08": 7,
       "M09": 6,
       "M10": 4,
-      "M11": 8,
+      "M11": 11,
       "M12": 5,
       "M13": 7
     },
@@ -233,5 +228,5 @@
     }
   },
   "failures": [],
-  "elapsedMs": 173
+  "elapsedMs": 253
 }

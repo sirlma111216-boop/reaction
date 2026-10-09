@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import type { GameView } from '../../shared/protocol';
 import type { TeamState } from '../../shared/types';
 import { EQUIPMENT, INGREDIENTS, MENUS, PRESETS } from '../../shared/content';
+import { josa } from '../../shared/josa';
 import { AssetImage } from '../components/AssetImage';
 import { Coins, Tag } from '../components/common';
 import type { Act } from './types';
@@ -97,7 +98,7 @@ export function MarketPlace({ game, team, act, canAct, pins, onPin }: { game: Ga
               <div key={id} className={`item-card equip ${owned ? 'owned' : ''}`}>
                 <AssetImage id={eq.image} size={72} />
                 <span className="item-name">{eq.name}</span>
-                <span className="small">{eq.enables.length ? `${eq.enables.map((m) => MENUS[m]!.name).join(', ')}을(를) 만들 수 있어요` : eq.effect}</span>
+                <span className="small">{eq.enables.length ? `${eq.enables.map((m) => MENUS[m]!.name).join(', ')}${josa(MENUS[eq.enables[eq.enables.length - 1]!]!.name, '을/를')} 만들 수 있어요` : eq.effect}</span>
                 <span className="small muted">쓸 때마다 전기 요금 {eq.electricity}코인</span>
                 {owned ? <Tag tone="mint">설치됨</Tag> : canAct ? <button className="btn btn-sm btn-primary" disabled={price > team.coins || team.actionsLeft <= 0 || team.ready} onClick={() => act({ type: 'equip', equipmentId: id }, 'sfx-equip')}>설치 <Coins n={price} /> (행동 1)</button> : <span className="row"><Coins n={price} /><button className="btn btn-sm btn-ghost" onClick={() => onPin(`eq:${id}`, eq.name)}>추천</button></span>}
                 {pins[`eq:${id}`] && <Tag tone="butter">추천 {pins[`eq:${id}`]}</Tag>}

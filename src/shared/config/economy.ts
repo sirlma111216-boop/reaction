@@ -51,7 +51,16 @@ export const DEFAULT_ECONOMY: EconomyConfig = applyTuning(buildDefault());
  * 초깃값(4절 표)에서 바뀐 항목만 여기 적어, 무엇이 바뀌었는지 한눈에 보이게 한다.
  */
 function applyTuning(c: EconomyConfig): EconomyConfig {
-  // (아직 조정한 값 없음. 시뮬레이션 결과에 따라 여기에 적는다)
+  // 1차 조정: 장비가 필요한 메뉴의 인분당 가격을 2코인씩 올렸다.
+  // 하루 행동 3번이 병목이라 장비는 「만들기 1번의 이익」을 키울 때만 값어치가 있는데,
+  // 초깃값에서는 장비 메뉴와 장비 없는 메뉴의 이익이 거의 같아 장비를 사는 쪽이 늘 졌다 (investor 승률 1% vs frugal 39%).
+  // 2차 조정: 2코인으로는 investor 15% vs frugal 33%(비 2.2)라 1코인을 더 올렸다 (600경기 비교: 비 1.3).
+  c.menuPrices['M01'] = 12;
+  c.menuPrices['M04'] = 8;
+  c.menuPrices['M05'] = 10;
+  c.menuPrices['M07'] = 10;
+  c.menuPrices['M11'] = 11;
+  c.version = 'economy-1.2';
   return c;
 }
 

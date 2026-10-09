@@ -12,8 +12,11 @@ const REPORT_DIR = join(process.cwd(), 'reports', 'balance');
 mkdirSync(REPORT_DIR, { recursive: true });
 mkdirSync(join(REPORT_DIR, 'runs'), { recursive: true });
 
-/** paired seeds: 같은 시드에서 봇 5종을 자리 6개에 순환 배치한 5경기. 같은 손님 운을 모든 정책이 겪는다. */
-function pairedSpecs(seed: string, presetId: PresetId, days: number, config: EconomyConfig, teamCount = 6): GameSpec[] {
+/**
+ * paired seeds: 같은 시드에서 봇 5종을 자리 5개에 순환 배치한 5경기. 같은 손님 운을 모든 정책이 겪는다.
+ * 자리 수를 봇 수와 같게 두어야 자리마다 모든 봇이 정확히 한 번씩 서고, 자리 효과를 봇 중복 없이 잴 수 있다.
+ */
+function pairedSpecs(seed: string, presetId: PresetId, days: number, config: EconomyConfig, teamCount = 5): GameSpec[] {
   const specs: GameSpec[] = [];
   for (let rot = 0; rot < BOT_IDS.length; rot++) {
     const teams = [];
@@ -183,7 +186,7 @@ function renderMarkdown(r: Report, byPreset: Record<string, Summary>, byDays: Re
   L.push(`- 경제 설정 버전: ${r.configVersion}, 콘텐츠 버전: ${r.contentVersion}`);
   L.push(`- 검증 경기 수: ${r.games} (검증 시드 접두사 \`${r.seedPrefix}-*\`, 학습 시드 \`train-*\` 와 분리), 팀 ${s.teamsPerGame}/경기, 소요 ${Math.round(r.elapsedMs / 1000)}s`);
   L.push(`- 오류·음수 코인·음수 재고: ${s.errors}건`);
-  L.push('- 정책 봇 5종(expert·learner·investor·frugal·random)을 paired seeds 로 자리 6개에 순환 배치(시드당 5경기). 손님은 (시드, 날짜, 팀)으로 정해지므로 같은 운을 모든 정책이 겪는다. 봇은 학생과 같은 명령 검증을 거치며 다른 팀의 비공개 정보나 미래의 손님을 보지 않는다.');
+  L.push('- 정책 봇 5종(expert·learner·investor·frugal·random)을 paired seeds 로 자리 5개에 순환 배치(시드당 5경기). 손님은 (시드, 날짜, 팀)으로 정해지므로 같은 운을 모든 정책이 겪는다. 봇은 학생과 같은 명령 검증을 거치며 다른 팀의 비공개 정보나 미래의 손님을 보지 않는다.');
   L.push('- 메뉴판 4종 × 영업일 6·8·10일을 돌아가며 섞었다.', '');
   L.push('## 10.4 밸런스 목표', '', '| 지표 | 목표 | 결과 | 달성 |', '|---|---|---|---|');
   const names: Record<string, string> = { errors: '오류, 음수 코인, 음수 재고', firstSaleDay1: '1일 차 첫 판매 비율 (random 제외)', positionSpread: '자리에 따른 승률 차이', expertVsLearner: 'expert 와 learner 순이익 중앙값 차이', investorVsFrugal: 'investor 와 frugal 승률', dominantMenu: '한 메뉴의 매출 비중 (3학년 메뉴판)', payback: '3일 차까지 산 장비의 본전 회수 날', expertWaste: 'expert 폐기 비율', randomNet: 'random 순이익 중앙값' };
