@@ -11,7 +11,8 @@ export interface Env {
   ROOM: DurableObjectNamespace<RoomDurableObject>;
   DIRECTORY: DurableObjectNamespace<DirectoryDurableObject>;
   ASSETS: Fetcher;
-  TEACHER_ID: string;
+  /** 비밀값으로 등록한다. 없으면 'teacher' */
+  TEACHER_ID?: string;
   /** `wrangler secret put TEACHER_PASSWORD` 로만 등록한다. 없으면 교사 로그인을 막는다. */
   TEACHER_PASSWORD?: string;
   ENVIRONMENT: string;

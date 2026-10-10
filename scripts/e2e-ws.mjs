@@ -2,7 +2,7 @@
  * 실서버(wrangler dev 또는 배포 URL) 통합 테스트.
  * 교사 로그인 → 방 생성 → 학생 N명 입장 → 팀장 임명 → 카페 생성·가입 → 시작 →
  * 점장 아닌 학생의 명령 거절, 중복 명령 ID, 재접속 복구, 다른 팀 비공개 정보 미전송, 잠시 멈춤, 팀 건너뛰기, 동시 마감에서 정산 1회 → 마지막 날까지 완주.
- * 사용: node scripts/e2e-ws.mjs [baseUrl] [students] [full=1]   (교사 비밀번호는 환경 변수 TEACHER_PASSWORD)
+ * 사용: node scripts/e2e-ws.mjs [baseUrl] [students] [full=1]   (교사 아이디·비밀번호는 환경 변수 TEACHER_ID·TEACHER_PASSWORD)
  */
 const base = process.argv[2] ?? 'http://127.0.0.1:8787';
 const STUDENTS = Number(process.argv[3] ?? 30);
@@ -10,6 +10,7 @@ const FULL = (process.argv[4] ?? '1') === '1';
 const TEAMS = Math.min(6, Math.max(2, Math.floor(STUDENTS / 5)));
 const wsBase = base.replace(/^http/, 'ws');
 const PASSWORD = process.env.TEACHER_PASSWORD ?? '';
+const TEACHER_ID = process.env.TEACHER_ID ?? 'teacher';
 const results = [];
 const check = (name, ok, detail = '') => { results.push({ name, ok, detail }); console.log(`${ok ? '○' : '×'} ${name}${detail ? ' — ' + detail : ''}`); };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -55,9 +56,9 @@ class Client {
   if (!PASSWORD) { console.error('TEACHER_PASSWORD 환경 변수가 필요합니다 (.dev.vars 와 같은 값).'); process.exit(2); }
   const health = await api('/api/health');
   check('서버 응답', health.status === 200 && health.data.teacherReady === true, health.data.teacherReady ? '' : '교사 비밀번호 미설정');
-  const bad = await api('/api/teacher/login', { method: 'POST', body: JSON.stringify({ id: 'teacher', password: 'wrong-' + PASSWORD }) });
+  const bad = await api('/api/teacher/login', { method: 'POST', body: JSON.stringify({ id: TEACHER_ID, password: 'wrong-' + PASSWORD }) });
   check('잘못된 비밀번호 거절', bad.status === 401);
-  const login = await api('/api/teacher/login', { method: 'POST', body: JSON.stringify({ id: 'teacher', password: PASSWORD }) });
+  const login = await api('/api/teacher/login', { method: 'POST', body: JSON.stringify({ id: TEACHER_ID, password: PASSWORD }) });
   check('교사 로그인', login.status === 200 && !!login.data.teacherKey);
   const key = login.data.teacherKey;
   check('교사 키 없이 방 생성 거절', (await api('/api/rooms', { method: 'POST', body: JSON.stringify({}) })).status === 401);

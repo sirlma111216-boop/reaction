@@ -99,7 +99,7 @@ function StudentJoin({ onJoin }: { onJoin: (r: JoinResult) => void }) {
 
 function TeacherPanel({ onJoin }: { onJoin: (r: JoinResult) => void }) {
   const [key, setKey] = useState<string | null>(loadTeacherKey());
-  const [id, setId] = useState('teacher');
+  const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [nick, setNick] = useState('선생님');
   const [preset, setPreset] = useState<PresetId>(DEFAULT_PRESET);
@@ -140,9 +140,9 @@ function TeacherPanel({ onJoin }: { onJoin: (r: JoinResult) => void }) {
   if (!key) {
     return (
       <div className="stack">
-        <label className="field">아이디<input value={id} onChange={(e) => setId(e.target.value)} autoComplete="username" /></label>
+        <label className="field">아이디<input value={id} onChange={(e) => setId(e.target.value)} autoComplete="username" inputMode="email" autoCapitalize="none" /></label>
         <label className="field">비밀번호<input type="password" value={pw} onChange={(e) => setPw(e.target.value)} autoComplete="current-password" onKeyDown={(e) => { if (e.key === 'Enter') void login(); }} /></label>
-        <button className="btn btn-primary btn-block" disabled={busy || !pw} onClick={login}>교사 로그인</button>
+        <button className="btn btn-primary btn-block" disabled={busy || !pw || !id.trim()} onClick={login}>교사 로그인</button>
       </div>
     );
   }
