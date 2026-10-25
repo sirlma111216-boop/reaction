@@ -1,5 +1,6 @@
 /// <reference types="@cloudflare/workers-types" />
 import { DurableObject } from 'cloudflare:workers';
+import type { Env } from './index';
 
 export interface RoomSummary {
   code: string;
@@ -15,9 +16,31 @@ const LOGIN_WINDOW_MS = 60_000;
 const LOGIN_MAX = 10;
 
 /** 교사용 방 목록과 로그인 시도 제한. 방 자체의 권위는 각 Room DO 에 있다. */
-export class DirectoryDurableObject extends DurableObject {
+export class DirectoryDurableObject extends DurableObject<Env> {
   private list: RoomSummary[] | null = null;
   private logins: Record<string, number[]> = {};
+
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+    ctx.blockConcurrencyWhile(async () => {
+      await this.load();
+      await this.armCleanup();
+    });
+  }
+
+  private async armCleanup(): Promise<void> {
+    const dates = (this.list ?? []).map(r => r.createdAt + MAX_AGE).filter(Number.isFinite);
+    if (dates.length) await this.ctx.storage.setAlarm(Math.max(Date.now() + 1000, Math.min(...dates)));
+    else await this.ctx.storage.deleteAlarm();
+  }
+
+  async alarm(): Promise<void> {
+    await this.load();
+    this.list = (this.list ?? []).filter(r => !Number.isFinite(r.createdAt) || Date.now() - r.createdAt < MAX_AGE);
+    if (!this.list.length) await this.ctx.storage.deleteAll();
+    else await this.ctx.storage.put('rooms', this.list);
+    await this.armCleanup();
+  }
 
   private async load(): Promise<RoomSummary[]> {
     if (!this.list) this.list = (await this.ctx.storage.get<RoomSummary[]>('rooms')) ?? [];
@@ -25,6 +48,7 @@ export class DirectoryDurableObject extends DurableObject {
   }
   private async save(): Promise<void> {
     await this.ctx.storage.put('rooms', this.list ?? []);
+    await this.armCleanup();
   }
 
   async fetch(request: Request): Promise<Response> {
